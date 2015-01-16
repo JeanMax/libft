@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/01/09 05:13:31 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/01/16 03:32:53 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,7 @@
 # define BUFF_SIZE 8
 
 # include <string.h>
-# include "edit.h"
-
-/*
-** lst1 struct
-*/
-typedef struct s_list	t_list;
-struct	s_list
-{
-	void	*content;
-	size_t	content_size;
-	t_list	*next;
-};
+# include "../edit/edit.h"
 
 /*
 ** io
@@ -48,6 +37,7 @@ void	ft_debugstr(char *name, char *str);
 void	ft_debugnbr(char *name, int nbr);
 int		get_all(int const fd, char **a);
 int		get_next_line(int const fd, char **line);
+int		get_line(int const fd, char **a);
 
 /*
 ** is
@@ -73,7 +63,6 @@ void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstaddlast(t_list **alst, t_list *new);
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdellink(t_list **alst, t_list *lst);
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void	ft_lstinser(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void	ft_lstrplc(t_list **alst, t_list *old, t_list *new);
@@ -83,9 +72,6 @@ int		ft_lstisn(t_list **alst, t_list *lst);
 int		ft_lstlen(t_list **alst);
 t_list	*ft_lstlast(t_list **alst);
 t_list	*ft_lstat(t_list **alst, size_t n);
-t_list	*ft_lstfind(t_list **alst, void *data);
-t_list	*ft_lstnew(void const *content, size_t content_size);
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /*
 ** lst2
@@ -111,6 +97,8 @@ void	ft_lclean(t_lst **alst);
 ** mem
 */
 void	ft_bzero(void *s, size_t n);
+void	ft_freestab(char **tab);
+void	ft_freeitab(int *tab);
 void	ft_memdel(void **ap);
 void	*ft_memalloc(size_t size);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);

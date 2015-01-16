@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   edit.h                                             :+:      :+:    :+:   */
+/*   ft_freestab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 03:39:14 by mcanal            #+#    #+#             */
-/*   Updated: 2015/01/09 05:02:40 by mcanal           ###   ########.fr       */
+/*   Created: 2015/01/15 03:58:41 by mcanal            #+#    #+#             */
+/*   Updated: 2015/01/16 03:13:31 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EDIT_H
-
-# define EDIT_H
-
 /*
-** lst2 struct
+** free a char * tab
 */
-typedef struct s_lst	t_lst;
-struct	s_lst
+
+#include "libft.h"
+
+void	ft_freestab(char **tab)
 {
-	char	*f_name;
-	char	*d_name;
-	int		date;
-	t_lst	*next;
-	t_lst	*prev;
-};
+	int	i;
 
-/*
-** lst2
-*/
-t_lst	*ft_lnew(char *f_name, char *d_name, int date);
-t_lst	*ft_lfind(t_lst **alst, char *data);
-void	ft_lfree(t_lst **lst);
-
-#endif
+	i = 0;
+	while (tab[i])
+		ft_memdel((void *)&tab[i++]);
+	ft_memdel((void *)&tab);
+}
