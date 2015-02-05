@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/01/16 03:32:19 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/05 19:03:14 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -48,7 +48,8 @@ SRCC = 	str/ft_strindex.c			str/ft_strrindex.c		io/get_next_line.c		\
 		io/ft_putstr_clr.c			io/ft_putchar_clr.c		io/ft_putendl_clr.c		\
 		io/ft_debugstr.c			io/ft_debugnbr.c		io/ft_putnbr_clr.c		\
 		edit/lst2/ft_lfree.c		lst2/ft_lclean.c		edit/lst2/ft_lfind.c	\
-		io/get_line.c				mem/ft_freestab.c		mem/ft_freeitab.c
+		io/get_line.c				mem/ft_freestab.c		mem/ft_freeitab.c		\
+		mem/ft_cpystab.c			io/fail.c				io/failn.c
 
 
 SRCO=	ft_strindex.o	ft_strrindex.o		get_next_line.o		\
@@ -87,7 +88,8 @@ SRCO=	ft_strindex.o	ft_strrindex.o		get_next_line.o		\
 		ft_putstr_clr.o	ft_putchar_clr.o	ft_putendl_clr.o	\
 		ft_debugstr.o	ft_debugnbr.o		ft_putnbr_clr.o		\
 		ft_lfree.o		ft_lclean.o			ft_lfind.o			\
-		ft_freestab.o	ft_freeitab.o		get_line.o
+		ft_freestab.o	ft_freeitab.o		get_line.o			\
+		ft_cpystab.o	fail.o				failn.o
 
 FLAG = -Wall -Wextra -Werror -c -I inc/
 
