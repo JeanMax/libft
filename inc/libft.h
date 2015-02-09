@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/05 19:02:07 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/09 02:43:44 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define BUFF_SIZE 8
 
 # include <string.h>
-# include "../edit/edit.h"
+# include "edit.h"
 
 /*
 ** io
