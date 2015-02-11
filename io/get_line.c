@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 03:55:50 by mcanal            #+#    #+#             */
-/*   Updated: 2015/01/15 04:03:10 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/11 01:12:36 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	get_line(int const fd, char **a)
 {
 	int		i;
 	int		stop;
+	int		n;
 	char	buf[BUFF_SIZE];
 
 	if (!a || fd < 0)
@@ -33,10 +34,13 @@ int	get_line(int const fd, char **a)
 		*a = (char *)ft_realloc((void *)*a, ft_strlen(*a), ft_strlen(*a) + i);
 		ft_strcat(*a, buf);
 		if ((stop = ft_strindex(*a, '\n')) != -1)
+		{
+			n = 1;
 			break ;
+		}
 	}
 	*a = ft_realloc((void *)*a, ft_strlen(*a), stop);
-	if (!*a || i < 0)
+	if (!*a || i < 0 || !n)
 		return (0);
 	return (1);
 }
