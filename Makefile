@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/09 05:29:11 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/11 01:32:28 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -59,7 +59,7 @@ C_STR =		ft_strindex.c		ft_strrindex.c		ft_strcpy.c			\
 			ft_strequ.c			ft_strmap.c			ft_strrchr.c		\
 			ft_striter.c		ft_strmapi.c		ft_strsub.c			\
 			ft_strclr.c			ft_striteri.c		ft_strnequ.c		\
-			ft_itoa.c			ft_strtrim.c
+			ft_itoa.c			ft_strtrim.c		ft_strndup.c
 SRCC =	$(C_EDIT1:%.c=edit/lst1/%.c)		$(C_EDIT2:%.c=edit/lst2/%.c)\
 		$(C_IO:%.c=io/%.c)					$(C_IS:%.c=is/%.c)			\
 		$(C_LST1:%.c=lst1/%.c)				$(C_LST2:%.c=lst2/%.c)		\
@@ -79,7 +79,7 @@ $(NAME): $(SRCO) $(INC)
 	@ranlib $(NAME) || $(RM) $(NAME)
 
 $(O_DIR)/%.o: %.c
-	@$(CC) -c $(CFLAGS) $^ -o $@ || $(RM) $(NAME)
+	$(CC) -c $(CFLAGS) $^ -o $@ || $(RM) $(NAME)
 
 clean:
 	@$(RM) $(SRCO)
