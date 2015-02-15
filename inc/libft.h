@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/12 19:20:34 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/15 21:31:50 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # include <string.h>
 # include "edit.h"
+
+typedef unsigned char	t_char;
 
 /*
 ** io
@@ -55,6 +57,7 @@ int		ft_islower(int c);
 int		ft_isprint(int i);
 int		ft_ispunct(int c);
 int		ft_isspace(int c);
+int		ft_istoobig(char *s);
 int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 

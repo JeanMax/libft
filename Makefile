@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/12 19:20:17 by mcanal           ###   ########.fr        #
+#    Updated: 2015/02/15 21:30:59 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -32,7 +32,7 @@ C_IS =		ft_isalnum.c		ft_isalpha.c		ft_isxdigit.c		\
 			ft_isascii.c		ft_isdigit.c		ft_isprint.c		\
 			ft_islower.c		ft_isupper.c		ft_isblank.c		\
 			ft_iscntrl.c		ft_isgraph.c		ft_isspace.c		\
-			ft_ispunct.c
+			ft_ispunct.c		ft_istoobig.c
 C_LST1 =	ft_lstlast.c		ft_lstdel.c			ft_lstiter.c		\
 			ft_lstadd.c			ft_lstaddlast.c		ft_lstlen.c			\
 			ft_lstat.c			ft_lstisempty.c		ft_lstislast.c		\
@@ -78,7 +78,7 @@ $(NAME): $(SRCO) $(INC)
 	@ranlib $(NAME) || $(RM) $(NAME)
 
 $(O_DIR)/%.o: %.c
-	$(CC) -c $(CFLAGS) $^ -o $@ || $(RM) $(NAME)
+	@$(CC) -c $(CFLAGS) $^ -o $@ || $(RM) $(NAME)
 
 clean:
 	@$(RM) $(SRCO)
