@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 05:46:14 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/18 06:45:33 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/02/18 06:56:30 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			ft_putdbl(double nbr)
     ft_putchar('.');
     nbr -= (int)nbr;
     swap = nbr * 10;
-    while (swap < 1)
+    while (swap < 1 && swap != 0)
     {
         ft_putchar('0');
         swap *= 10;
