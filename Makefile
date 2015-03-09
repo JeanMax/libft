@@ -6,12 +6,12 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/02/18 06:19:48 by mcanal           ###   ########.fr        #
+#    Updated: 2015/03/09 01:10:59 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libft.a
-CFLAGS = -Wall -Wextra -Werror -I inc/
+CFLAGS = -Wall -Wextra -Werror -O2 -pedantic -Iinc/
 INC = inc/libft.h
 CC = gcc
 AR = ar rc
@@ -75,11 +75,11 @@ all:
 	@$(MAKE) $(NAME)
 
 $(NAME): $(SRCO) $(INC)
-	@$(AR) $(NAME) $(SRCO)
-	@ranlib $(NAME) || $(RM) $(NAME)
+	$(AR) $(NAME) $(SRCO)
+	ranlib $(NAME)
 
 $(O_DIR)/%.o: %.c
-	@$(CC) -c $(CFLAGS) $^ -o $@ || $(RM) $(NAME)
+	$(CC) -c $(CFLAGS) $^ -o $@
 
 clean:
 	@$(RM) $(SRCO)

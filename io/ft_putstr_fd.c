@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:56:38 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/09 21:25:31 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/03/09 00:44:22 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	if ((write(fd, s, ft_strlen(s))) == -1)
+		return ;
 }

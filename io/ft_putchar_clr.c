@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:53:08 by mcanal            #+#    #+#             */
-/*   Updated: 2015/01/09 03:35:40 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/03/09 00:40:54 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	ft_putchar_clr(char c, char *clr)
 	str[3] = (clr[0] == 'p' ? '5' : str[3]);
 	str[3] = (clr[0] == 's' ? '6' : str[3]);
 	str[3] = (clr[0] == 'w' ? '7' : str[3]);
-	write(1, str, 13);
+	if ((write(1, str, 13)) == -1)
+		return ;
 }

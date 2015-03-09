@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/14 15:10:14 by mcanal            #+#    #+#             */
-/*   Updated: 2014/12/14 19:33:25 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/03/09 00:39:44 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ char			**ft_strsplit(char const *s, char c)
 			i++;
 		}
 	}
-	tab[i] = '\0';
+	tab[i] = NULL;
 	return (tab);
 }
