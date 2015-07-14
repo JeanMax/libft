@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/07/13 08:30:35 by mcanal           ###   ########.fr        #
+#    Updated: 2015/07/14 23:27:52 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -86,6 +86,9 @@ BASIC = \033[0m
 
 all:
 	@$(MAKE) $(NAME)
+
+debug: CFLAGS = -g -O2
+debug: fclean $(NAME)
 
 -include $(DEPS)
 

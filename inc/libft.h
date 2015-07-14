@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/02/18 06:26:33 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/07/14 23:44:00 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl(char const *s);
 void	ft_putendl_fd(char const *s, int fd);
-void	*fail(char *s);
-void	*failn(char *s);
+void	*fail(char const *s);
+void	*failn(char const *s);
 void	ft_putdbl(double nbr);
 void	ft_putdbl_fd(double nbr, int fd);
 void	ft_putnbr(int nbr);
@@ -37,8 +37,8 @@ void	ft_putstr(char const *s);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putdbl_clr(double nbr, char *clr);
 void	ft_putnbr_clr(int nbr, char *clr);
-void	ft_putstr_clr(char const *s, char *clr);
-void	ft_putendl_clr(char const *s, char *clr);
+void	ft_putstr_clr(char *s, char *clr);
+void	ft_putendl_clr(char *s, char *clr);
 void	ft_putchar_clr(char c, char *clr);
 void	ft_debugstr(char *name, char *str);
 void	ft_debugnbr(char *name, int nbr);

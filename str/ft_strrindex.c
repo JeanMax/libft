@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 13:03:59 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/25 13:30:25 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/07/15 00:02:06 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ int		ft_strrindex(const char *s, int c)
 
 	i = 0;
 	ret = -1;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == (char)c)
+		if (*s == (char)c)
 			ret = i;
 		i++;
+		s++;
 	}
-	if (s[i] == (char)c)
+	if (*s == (char)c)
 		ret = i;
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:10:42 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/09 21:21:54 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/07/14 23:59:28 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 
 char *ft_strcpy(char *dest, const char *src)
 {
-	size_t i;
+	char	*swap;
 
-	i = 0;
-	while (src[i])
+	swap = dest;
+	while (*src)
 	{
-		dest[i] = src[i];
-		i++;
+		*dest = *src;
+		dest++;
+		src++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	*dest = '\0';
+	return (swap);
 }
