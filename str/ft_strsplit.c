@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/14 15:10:14 by mcanal            #+#    #+#             */
-/*   Updated: 2015/03/09 00:39:44 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/07/12 09:05:23 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char			**ft_strsplit(char const *s, char c)
 		{
 			if (!(tab[i] = ft_strsub(s, 0, ft_word_len(s, c))))
 			{
-				ft_free_tab(tab, i);
+				ft_free_tab(tab, (int)i);
 				return (NULL);
 			}
 			s += ft_word_len(s, c);
