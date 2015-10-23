@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/09/11 19:19:02 by mcanal           ###   ########.fr        #
+#    Updated: 2015/10/23 17:07:38 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,11 +18,11 @@ RM = rm -rf
 MKDIR = mkdir -p
 O_DIR = obj
 VPATH = 	edit/lst1:edit/lst2:io:is:lst1:lst2:mem:str
-CFLAGS =	-Wall -Wextra -Werror -Wpedantic -Wshadow -Wcast-qual -Wcast-align \
+CFLAGS =	-Wall -Wextra -Werror -Wpedantic -Wshadow -Wcast-align \
 			-Wconversion -Wstrict-prototypes -Wmissing-prototypes \
 			-Wmissing-declarations -Wnonnull -Wuninitialized -Wfloat-equal \
 			-Wbad-function-cast -Wundef -Wstrict-overflow=5 -Waggregate-return \
-			-Wunreachable-code -Winit-self -O2
+			-Wunreachable-code -Winit-self -O2 #-Wcast-qual
 C_EDIT1 =	ft_lstnew.c			ft_lstmap.c			ft_lstdelone.c		\
 			ft_lstfind.c
 C_EDIT2 =	ft_lnew.c			ft_lfree.c 			ft_lfind.c
