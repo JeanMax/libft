@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/12/03 17:59:47 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/12/05 17:54:27 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ struct	s_bst
 t_bst	*ft_bstnew(void *content, size_t content_size);
 void	ft_bstfree(t_bst **node);
 void	ft_bstclean(t_bst **root);
-t_bool	ft_bstisleaf(t_bst *node);
-t_bool	ft_bstisempty(t_bst *root);
 t_bool	ft_bstisperfect(t_bst *root);
 int		ft_bstgetbalance(t_bst *node);
 size_t	ft_bstlen(t_bst *root);

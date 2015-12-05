@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2015/12/03 17:43:08 by mcanal           ###   ########.fr        #
+#    Updated: 2015/12/05 17:53:59 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,11 +25,10 @@ CFLAGS =	-Wall -Wextra -Werror -Wpedantic -Wshadow -Wcast-align \
 			-Winit-self -Wold-style-definition -Wpadded -Wredundant-decls -O2 
 #-Wcast-qual
 C_BST =		ft_bstnew.c			ft_bstfree.c		ft_bstclean.c		\
-			ft_bstisleaf.c		ft_bstisempty.c		ft_bstlen.c			\
 			ft_bstfind.c		ft_bstadd.c			ft_bstdelnode.c		\
 			ft_bstmax.c			ft_bstmin.c			ft_bstinorder.c		\
 			ft_bstpreorder.c	ft_bstpostorder.c	ft_bstheight.c		\
-			ft_bstgetbalance.c	ft_bstisperfect.c	#ft_bstavladd.c
+			ft_bstgetbalance.c	ft_bstisperfect.c	ft_bstlen.c #ft_bstavladd.c
 C_INT =		ft_isalnum.c		ft_isalpha.c		ft_isxdigit.c		\
 			ft_isascii.c		ft_isdigit.c		ft_isprint.c		\
 			ft_islower.c		ft_isupper.c		ft_isblank.c		\
