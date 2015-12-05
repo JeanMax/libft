@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lislast.c                                       :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 04:32:18 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/22 14:25:45 by mcanal           ###   ########.fr       */
+/*   Created: 2015/11/27 22:21:35 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/02 20:55:24 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Retourne 1 si l'élément courant est le dernier élément de la liste, 0 sinon.
+** free a link
 */
 
 #include "libft.h"
 
-int	ft_lislast(t_lst **alst)
+void	ft_lstfree(t_list **link)
 {
-	if (!alst)
-		return (FALSE);
-	if ((*alst)->next == NULL)
-		return (TRUE);
-	return (FALSE);
+	ft_memdel((void *)&(*link)->content);
+	ft_memdel((void *)link);
 }

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstislast.c                                     :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 04:32:18 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/12 23:25:03 by mcanal           ###   ########.fr       */
+/*   Created: 2014/11/09 04:11:38 by mcanal            #+#    #+#             */
+/*   Updated: 2015/09/11 18:46:34 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Retourne 1 si l'élément courant est le dernier élément de la liste, 0 sinon.
+** checks for white-space  characters.   In  the  "C"  and  "POSIX"
+** locales,  these  are:  space,  form-feed ('\f'), newline ('\n'),
+** carriage return ('\r'), horizontal tab ('\t'), and vertical  tab
+** ('\v').
 */
 
 #include "libft.h"
 
-int	ft_lstislast(t_list **alst)
+int				ft_isspace(int c)
 {
-	if (!alst)
-		return (FALSE);
-	if ((*alst)->next == NULL)
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+			|| c == ' ')
 		return (TRUE);
 	return (FALSE);
 }

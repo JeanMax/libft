@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_bstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/09 22:07:36 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 19:47:37 by mcanal           ###   ########.fr       */
+/*   Created: 2015/11/28 15:23:57 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/03 17:47:10 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** Alloue (avec malloc(3)) et retourne un maillon “frais”. Les champs content
-** et content_size du nouveau maillon sont initialisés par copie des paramètr
+** et content_size du nouveau maillon sont initialisés par copie des paramètre
 ** de la fonction. Si le paramètre content est nul, le champs content es
 ** initialisé à NULL et le champs content_size est initialisé à 0 que
-** la valeur du paramètre content_size. Le champ next est initialisé à N.
+** la valeur du paramètre content_size. Les champs left/right sont initialisés
+** à NULL.
 ** Si l’allocation échoue, la fonction renvoie NULL
 */
 
 #include "libft.h"
 #include <stdlib.h>
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+t_bst	*ft_bstnew(void *content, size_t content_size)
 {
-	t_list	*new;
+	t_bst	*new;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
+	if (!(new = malloc(sizeof(t_bst))))
 		return (NULL);
 	if (content)
 	{
-		new->content = malloc(content_size);
-		if (!new->content)
+		if (!(new->content = malloc(content_size)))
 			return (NULL);
 		new->content_size = content_size;
 		ft_memcpy(new->content, content, content_size);
@@ -42,6 +41,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		new->content = NULL;
 		new->content_size = 0;
 	}
-	new->next = NULL;
+	new->left = NULL;
+	new->right = NULL;
 	return (new);
 }

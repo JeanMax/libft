@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/28 17:07:11 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 19:55:21 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/12/03 15:56:41 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,46 +20,75 @@
 
 #include "libft.h"
 #include <unistd.h>
+#include <stdlib.h>
 
-static int		is_there_line(char *left, char **line)
+static size_t	list_len(t_list *link, size_t len)
 {
-	char	*end;
+	if (!link)
+		return (0);
+	if (ft_memchr(link->content, 0, link->content_size))
+		return (len + link->content_size);
+	return (list_len(link->next, len + link->content_size));
+}
 
-	if (!left)
-		return (FALSE);
-	if ((end = ft_strchr(left, '\n')))
+static t_list	*cpyfree_list(t_list *link, char *s)
+{
+	t_list	*next;
+
+	if (!link)
+		return (NULL);
+	next = link->next;
+	ft_memcpy((void *)s, link->content, link->content_size);
+	s += link->content_size;
+	if (ft_memchr(link->content, 0, link->content_size))
 	{
-		*line = ft_strsub(left, 0, ft_strlen(left) - ft_strlen(end));
-		return (TRUE);
+		ft_lstfree(&link);
+		return (next);
 	}
-	return (FALSE);
+	ft_lstfree(&link);
+	return (cpyfree_list(next, s));
+}
+
+static int		fill_line(t_list **fst_link, char **line)
+{
+	if (!(*line = (char *)malloc(sizeof(char) * list_len(*fst_link, 0))))
+		return (-1);
+	*fst_link = cpyfree_list(*fst_link, *line);
+	return (1);
+}
+
+static void		add_links(t_list **fst_link, char *s, size_t len)
+{
+	char	*eol;
+	size_t	line_len;
+
+	if (!(eol = ft_memchr(s, '\n', len)))
+	{
+		ft_lstaddlast(fst_link, ft_lstnew(s, len));
+		return ;
+	}
+	line_len = (size_t)(eol - s) + 1;
+	*eol = 0;
+	ft_lstaddlast(fst_link, ft_lstnew(s, line_len));
+	if (line_len != len)
+		add_links(fst_link, s + line_len, len - line_len);
 }
 
 int				get_next_line(int const fd, char **line)
 {
 	ssize_t			ret;
-	char			buf[BUFF_SIZE + 1];
-	static char		*left;
+	char			buf[BUFF_SIZE];
+	static t_list	*fst_link = NULL;
 
 	if (fd < 0 || !line)
 		return (-1);
-	if (is_there_line(left, line))
-	{
-		left = ft_strchr(left, '\n') + 1;
-		return (1);
-	}
+	if (fst_link && ft_memchr(fst_link->content, 0, fst_link->content_size))
+		return (fill_line(&fst_link, line));
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		buf[ret] = '\0';
-		left = ft_strjoin(left, buf);
-		if (is_there_line(left, line))
-		{
-			left = ft_strchr(left, '\n') + 1;
-			return (1);
-		}
+		add_links(&fst_link, buf, (size_t)ret);
+		if (ft_memchr(buf, 0, (size_t)ret))
+			return (fill_line(&fst_link, line));
 	}
-	if (!left)
-		left = ft_strnew(1);
-	*line = ft_strdup(left);
-	return (0);
+	return ((int)ret);
 }

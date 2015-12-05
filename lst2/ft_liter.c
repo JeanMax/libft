@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 02:29:26 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 18:53:59 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:35:50 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@
 
 #include "libft.h"
 
-void			ft_liter(t_lst *lst, void (*f)(t_lst *elem))
+void			ft_liter(t_lst *alst, void (*f)(t_lst *elem))
 {
-	if (lst && f)
-	{
-		if (lst->next != NULL)
-		{
-			f(lst);
-			ft_liter(lst->next, f);
-		}
-		else
-			f(lst);
-	}
+	if (!alst)
+		return ;
+	f(alst);
+	ft_liter(alst->next, f);
 }

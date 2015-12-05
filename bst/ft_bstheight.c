@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstisempty.c                                    :+:      :+:    :+:   */
+/*   ft_bstheight.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 03:24:38 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/12 16:41:25 by mcanal           ###   ########.fr       */
+/*   Created: 2015/11/28 23:40:56 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/03 17:51:16 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** renvoie 1 si la liste est vide, 0 si elle contient au moins un élément.
+** return the height of the binary tree
 */
 
 #include "libft.h"
 
-int		ft_lstisempty(t_list **alst)
+size_t	ft_bstheight(t_bst *root)
 {
-	if (*alst == NULL)
-		return (TRUE);
-	return (FALSE);
+	return (root ? 1 + (size_t)ft_max((int)ft_bstheight(root->left),
+										(int)ft_bstheight(root->right)) : 0);
 }

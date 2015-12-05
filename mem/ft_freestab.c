@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 03:58:41 by mcanal            #+#    #+#             */
-/*   Updated: 2015/07/21 20:06:45 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/30 02:20:07 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	ft_freestab(char **tab)
 	swap = tab;
 	while (*tab)
 		ft_memdel((void *)(tab++));
+	ft_memdel((void *)(tab));
 	ft_memdel((void *)&swap);
 }

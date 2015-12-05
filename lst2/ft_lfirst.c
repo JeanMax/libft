@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 03:58:41 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 18:54:05 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:32:08 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@
 
 #include "libft.h"
 
-t_lst			*ft_lfirst(t_lst **alst)
+t_lst			*ft_lfirst(t_lst *link)
 {
-	t_lst	*tmp;
-
-	if (!alst)
+	if (!link)
 		return (NULL);
-	tmp = *alst;
-	while (tmp->prev != NULL)
-		tmp = tmp->prev;
-	return (tmp);
+	while (link->prev)
+		link = link->prev;
+	return (link);
 }

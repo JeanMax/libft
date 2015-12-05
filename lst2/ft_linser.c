@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 04:40:23 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/24 15:04:37 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/27 22:42:44 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	ft_linser(t_lst **alst, t_lst *new)
 {
 	if (!alst || !new)
 		return ;
+	if (!*alst)
+	{
+		*alst = new;
+		return ;
+	}
 	new->next = (*alst)->next;
 	new->prev = *alst;
 	(*alst)->next = new;

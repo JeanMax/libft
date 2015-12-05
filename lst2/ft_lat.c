@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 03:35:27 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/22 17:15:29 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:30:22 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,11 @@
 
 #include "libft.h"
 
-t_lst	*ft_lat(t_lst **alst, size_t n)
+t_lst	*ft_lat(t_lst *alst, size_t n)
 {
-	t_lst	*tmp;
-
 	if (!alst || !n)
 		return (NULL);
-	tmp = *alst;
-	n--;
-	while (n-- && tmp->next != NULL)
-		tmp = tmp->next;
-	if (!tmp)
-		return (NULL);
-	return (tmp);
+	while (n-- && alst->next != NULL)
+		alst = alst->next;
+	return (alst);
 }

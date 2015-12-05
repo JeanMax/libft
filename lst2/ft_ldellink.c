@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 23:55:52 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/28 12:56:16 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:34:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 #include "libft.h"
 
-void	ft_ldellink(t_lst *lst)
+void	ft_ldellink(t_lst *link)
 {
-	if (!lst)
+	if (!link)
 		return ;
-	if (lst->prev != NULL)
-		lst->prev->next = lst->next;
-	if (lst->next != NULL)
-		lst->next->prev = lst->prev;
-	lst->prev = NULL;
-	lst->next = NULL;
+	if (link->prev != NULL)
+		link->prev->next = link->next;
+	if (link->next != NULL)
+		link->next->prev = link->prev;
+	link->prev = NULL;
+	link->next = NULL;
 }

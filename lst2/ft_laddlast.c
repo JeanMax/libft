@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 03:07:11 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 18:54:20 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/27 22:29:29 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void			ft_laddlast(t_lst **alst, t_lst *new)
 
 	if (!alst || !new)
 		return ;
+	if (!*alst)
+	{
+		*alst = new;
+		return ;
+	}
 	tmp = *alst;
 	while (tmp->next != NULL)
 		tmp = tmp->next;

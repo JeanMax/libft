@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 03:35:27 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/13 17:55:23 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:30:18 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,11 @@
 
 #include "libft.h"
 
-t_list	*ft_lstat(t_list **alst, size_t n)
+t_list	*ft_lstat(t_list *alst, size_t n)
 {
-	t_list	*tmp;
-
 	if (!alst || !n)
 		return (NULL);
-	tmp = *alst;
-	while (n-- && tmp->next != NULL)
-		tmp = tmp->next;
-	if (!tmp)
-		return (NULL);
-	return (tmp);
+	while (n-- && alst->next != NULL)
+		alst = alst->next;
+	return (alst);
 }

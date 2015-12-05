@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfind.c                                       :+:      :+:    :+:   */
+/*   ft_bstisempty.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 05:25:28 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 19:11:23 by mcanal           ###   ########.fr       */
+/*   Created: 2015/11/28 15:46:13 by mcanal            #+#    #+#             */
+/*   Updated: 2015/11/28 18:39:47 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** retourne l’adresse du premier élément dont la donnée est
-** "égale" à la donnée de référence
+** renvoie 1 si la liste est vide, 0 si elle contient au moins un élément.
 */
 
 #include "libft.h"
 
-t_list			*ft_lstfind(t_list **alst, void *data)
+t_bool		ft_bstisempty(t_bst *root)
 {
-	t_list	*tmp;
-
-	if (!alst || !data)
-		return (NULL);
-	tmp = *alst;
-	while (tmp->next != NULL)
-	{
-		if (!ft_memcmp(tmp->content, data, tmp->content_size))
-			return (tmp);
-		tmp = tmp->next;
-	}
-	if (!ft_memcmp(tmp->content, data, tmp->content_size))
-		return (tmp);
-	return (NULL);
+	return (root ? FALSE : TRUE);
 }

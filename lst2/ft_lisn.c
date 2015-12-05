@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 23:47:29 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 18:54:25 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:28:58 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,21 @@
 
 #include "libft.h"
 
-int				ft_lisn(t_lst **alst, t_lst *lst)
+size_t			ft_lisn(t_lst *alst, t_lst *link)
 {
-	t_lst	*tmp;
-	int		i;
+	size_t	i;
 
-	if (!alst || !lst)
+	if (!alst || !link)
 		return (FALSE);
-	if (*alst == lst)
-		return (TRUE);
-	tmp = *alst;
+	if (alst == link)
+		return (1);
 	i = 2;
-	while (tmp->next != NULL && tmp->next != lst)
+	while (alst->next && alst->next != link)
 	{
-		tmp = tmp->next;
+		alst = alst->next;
 		i++;
 	}
-	if (tmp->next != lst)
+	if (alst->next != link)
 		return (FALSE);
 	return (i);
 }

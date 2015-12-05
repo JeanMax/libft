@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lfind.c                                         :+:      :+:    :+:   */
+/*   ft_lstfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/09 04:58:45 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 19:11:12 by mcanal           ###   ########.fr       */
+/*   Created: 2014/11/11 05:25:28 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/03 18:05:45 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,10 @@
 
 #include "libft.h"
 
-t_lst			*ft_lfind(t_lst **alst, char *data)
+t_list			**ft_lstfind(t_list **alst, void *data, \
+							int (*cmp)(const void *a, const void *b))
 {
-	t_lst	*tmp;
-
-	if (!alst || !data)
-		return (NULL);
-	tmp = *alst;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->f_name, data))
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (NULL);
+	if (!(*alst) || !cmp(*alst, data))
+		return (alst);
+	return (ft_lstfind(&(*alst)->next, data, cmp));
 }

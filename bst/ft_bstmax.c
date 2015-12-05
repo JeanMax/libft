@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lisempty.c                                      :+:      :+:    :+:   */
+/*   ft_bstmax.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 03:24:38 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/25 18:12:43 by mcanal           ###   ########.fr       */
+/*   Created: 2015/11/28 20:31:11 by mcanal            #+#    #+#             */
+/*   Updated: 2015/11/28 20:35:20 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** renvoie 1 si la liste est vide, 0 si elle contient au moins un élément.
-** /!\ still bugged yet
+** return the greatest element of the tree
 */
 
 #include "libft.h"
 
-int		ft_lisempty(t_lst **alst)
+t_bst	*ft_bstmax(t_bst *node)
 {
-	if (*alst == NULL)
-		return (TRUE);
-	return (FALSE);
+	return (node->right ? ft_bstmax(node->right) : node);
 }

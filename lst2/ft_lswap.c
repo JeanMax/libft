@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 17:02:22 by mcanal            #+#    #+#             */
-/*   Updated: 2015/01/16 03:11:31 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/12/03 17:42:20 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 
 #include "libft.h"
 
-void	ft_lswap(t_lst *lst1, t_lst *lst2)
+void	ft_lswap(t_lst *link1, t_lst *link2)
 {
 	t_lst	*target;
 	t_lst	*swap;
 
-	if (ft_lisfirst(&lst1))
+	if (!link1->prev)
 	{
-		swap = lst2;
-		lst2 = lst1;
-		lst1 = swap;
+		swap = link2;
+		link2 = link1;
+		link1 = swap;
 	}
-	if (lst1->prev != lst2)
-		target = lst1->prev;
+	if (link1->prev != link2)
+		target = link1->prev;
 	else
-		target = lst1;
-	ft_ldellink(lst1);
-	ft_lrplc(lst2, lst1);
-	ft_linser(&target, lst2);
+		target = link1;
+	ft_ldellink(link1);
+	ft_lrplc(link2, link1);
+	ft_linser(&target, link2);
 }

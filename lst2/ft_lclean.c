@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 04:42:41 by mcanal            #+#    #+#             */
-/*   Updated: 2015/01/09 04:52:25 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/12/02 20:53:33 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,11 @@
 
 void	ft_lclean(t_lst **alst)
 {
-	t_lst	*to_free;
-	t_lst	*tmp;
+	t_lst	*next;
 
-	to_free = *alst;
-	tmp = to_free;
-	while (tmp)
-	{
-		tmp = to_free->next;
-		ft_lfree(&to_free);
-		to_free = tmp;
-	}
+	if (!*alst)
+		return ;
+	next = (*alst)->next;
+	ft_lfree(alst);
+	ft_lclean(&next);
 }

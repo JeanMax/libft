@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 04:25:32 by mcanal            #+#    #+#             */
-/*   Updated: 2015/07/12 08:54:03 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:29:41 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,16 @@
 
 #include "libft.h"
 
-int	ft_llen(t_lst **alst)
+size_t	ft_llen(t_lst *alst)
 {
-	t_lst	*tmp;
-	int		i;
+	size_t	i;
 
 	if (!alst)
-		return (FALSE);
-	tmp = *alst;
+		return (0);
 	i = 1;
-	while (tmp->next != NULL)
+	while (alst->next)
 	{
-		tmp = tmp->next;
+		alst = alst->next;
 		i++;
 	}
 	return (i);

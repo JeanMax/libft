@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lisfirst.c                                      :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
+/*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 04:32:18 by mcanal            #+#    #+#             */
-/*   Updated: 2014/11/22 14:25:35 by mcanal           ###   ########.fr       */
+/*   Created: 2014/11/03 15:32:13 by mcanal            #+#    #+#             */
+/*   Updated: 2014/11/09 21:03:45 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Retourne 1 si l'élément courant est le premier élément de la liste, 0 sinon.
+** toupper() converts the letter c to upper case, if possible.
 */
 
 #include "libft.h"
 
-int	ft_lisfirst(t_lst **alst)
+int		ft_toupper(int c)
 {
-	if (!alst)
-		return (FALSE);
-	if ((*alst)->prev == NULL)
-		return (TRUE);
-	return (FALSE);
+	if (ft_islower(c))
+		return (c - 32);
+	return (c);
 }

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 02:31:48 by mcanal            #+#    #+#             */
-/*   Updated: 2015/09/11 19:48:05 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/11/28 18:21:14 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,25 @@
 
 #include "libft.h"
 
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list			*ft_lstmap(t_list *alst, t_list *(*f)(t_list *elem))
 {
-	t_list	*alist;
+	t_list	*new_alst;
 	t_list	*new_list;
-	t_list	*link;
+	t_list	*tmp;
 
-	if (!lst || !f)
+	if (!alst || !f)
 		return (NULL);
-	link = f(lst);
-	new_list = ft_lstnew(link->content, link->content_size);
-	if (!new_list)
+	tmp = f(alst);
+	if (!(new_list = ft_lstnew(tmp->content, tmp->content_size)))
 		return (NULL);
-	alist = new_list;
-	while (lst->next != NULL)
+	new_alst = new_list;
+	while (alst->next != NULL)
 	{
-		link = f(lst->next);
-		new_list->next = ft_lstnew(link->content, link->content_size);
-		if (new_list->next == NULL)
+		tmp = f(alst->next);
+		if (!(new_list->next = ft_lstnew(tmp->content, tmp->content_size)))
 			return (NULL);
 		new_list = new_list->next;
-		lst = lst->next;
+		alst = alst->next;
 	}
-	return (alist);
+	return (new_alst);
 }
