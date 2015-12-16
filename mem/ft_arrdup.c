@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_arrdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 01:19:15 by mcanal            #+#    #+#             */
-/*   Updated: 2015/12/05 21:42:40 by mcanal           ###   ########.fr       */
+/*   Created: 2015/12/13 22:11:05 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/13 22:18:33 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** The strdup() function returns a pointer to a	new	string	which	is	a
-** duplicate	of the string s.	Memory for the new string is obtained with
-** malloc(3), and can be freed with free(3). The copy stops after n characters.
+** Return a copy of a string array.
 */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char		*ft_strndup(char *src, size_t n)
+char			**ft_arrdup(char **arr)
 {
-	char	*dup;
-	char	*swap;
+	char		**cpy;
+	size_t		i;
 
-	if (!n)
-		return (NULL);
-	if (!(dup = (char *)malloc(sizeof(char) * (n + 1))))
-		return (NULL);
-	swap = dup;
-	while (n--)
-		*swap++ = *src++;
-	*swap = 0;
-	return (dup);
+	i = 0;
+	while (arr[i])
+		i++;
+	cpy = (char **)malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (arr[i])
+	{
+		cpy[i] = ft_strdup(arr[i]);
+		i++;
+	}
+	cpy[i] = NULL;
+	return (cpy);
 }

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_arrdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 16:56:38 by mcanal            #+#    #+#             */
-/*   Updated: 2015/07/14 13:07:48 by mcanal           ###   ########.fr       */
+/*   Created: 2015/12/15 02:25:42 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/15 02:29:09 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Print a string on the specified file descriptor.
+** free a string from a string array
+** the right side of the array will be moved consequently
 */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(char const *s, int fd)
+void		ft_arrdelone(char **arr, char *to_del)
 {
-	if (s)
-		write(fd, s, ft_strlen(s));
+	while (*arr && *arr != to_del)
+		arr++;
+	if (!*arr)
+		return ;
+	ft_memdel((void *)&to_del);
+	while ((*arr = *(arr + 1)))
+		arr++;
 }

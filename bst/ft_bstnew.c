@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 15:23:57 by mcanal            #+#    #+#             */
-/*   Updated: 2015/12/03 17:47:10 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/12/11 17:06:18 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ t_bst	*ft_bstnew(void *content, size_t content_size)
 	}
 	new->left = NULL;
 	new->right = NULL;
+	new->height = 1;
 	return (new);
 }

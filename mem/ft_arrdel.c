@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_arrdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 16:56:38 by mcanal            #+#    #+#             */
-/*   Updated: 2015/07/14 13:07:48 by mcanal           ###   ########.fr       */
+/*   Created: 2015/12/13 22:13:22 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/13 22:50:02 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** Print a string on the specified file descriptor.
+** Free a char * tab
+** assume a NULL pointer has been allocated at the end
 */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(char const *s, int fd)
+static void	del_loop(char **arr)
 {
-	if (s)
-		write(fd, s, ft_strlen(s));
+	if (*arr)
+		del_loop(arr + 1);
+	ft_memdel((void *)arr);
+}
+
+void		ft_arrdel(char ***arr)
+{
+	if (*arr)
+		del_loop(*arr);
+	ft_memdel((void *)arr);
 }

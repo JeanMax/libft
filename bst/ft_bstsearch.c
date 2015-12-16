@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bstfind.c                                       :+:      :+:    :+:   */
+/*   ft_bstsearch.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/28 22:22:22 by mcanal            #+#    #+#             */
-/*   Updated: 2015/12/12 21:08:45 by mcanal           ###   ########.fr       */
+/*   Created: 2015/12/12 21:07:51 by mcanal            #+#    #+#             */
+/*   Updated: 2015/12/12 21:15:28 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** return the address of a node found using the cmp function
-** (search from a node)
+** (search from a value)
 */
 
 #include "libft.h"
 
-t_bst	**ft_bstfind(t_bst **root, t_bst *node, \
+t_bst	**ft_bstsearch(t_bst **root, void *content, size_t content_size, \
 						int (*cmp)(const void *a, const void *b))
 {
-	int		ret;
+	t_bst	node;
 
-	if (!(*root) || !(ret = cmp(*root, node)))
-		return (root);
-	return (ft_bstfind(ret < 0 ? &(*root)->left : &(*root)->right, node, cmp));
+	node.content = content;
+	node.content_size = content_size;
+	node.left = NULL;
+	node.right = NULL;
+	node.height = 1;
+	return (ft_bstfind(root, &node, cmp));
 }

@@ -6,18 +6,30 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2015/12/05 17:54:27 by mcanal           ###   ########.fr       */
+/*   Updated: 2015/12/15 02:27:10 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 
 # define LIBFT_H
-# define BUFF_SIZE	127
+
+# define BUFF_SIZE		127
 
 # ifndef TRUE
-#  define TRUE		1
-#  define FALSE		0
+#  define TRUE			1
+#  define FALSE			0
+# endif
+
+# ifndef EXIT_SUCCESS
+#  define EXIT_SUCCESS	0
+#  define EXIT_FAILURE	1
+# endif
+
+# ifndef STDIN_FILENO
+#  define STDIN_FILENO	0
+#  define STDOUT_FILENO	1
+#  define STDERR_FILENO	2
 # endif
 
 # ifndef INT_MAX
@@ -35,6 +47,7 @@
 # include <string.h>
 
 typedef unsigned char	t_char;
+typedef unsigned int	t_int;
 typedef int				t_bool;
 
 /*
@@ -70,6 +83,7 @@ struct	s_bst
 	size_t	content_size;
 	t_bst	*left;
 	t_bst	*right;
+	size_t	height;
 };
 
 /*
@@ -78,23 +92,22 @@ struct	s_bst
 t_bst	*ft_bstnew(void *content, size_t content_size);
 void	ft_bstfree(t_bst **node);
 void	ft_bstclean(t_bst **root);
-t_bool	ft_bstisperfect(t_bst *root);
-int		ft_bstgetbalance(t_bst *node);
 size_t	ft_bstlen(t_bst *root);
-size_t	ft_bstheight(t_bst *root);
 void	ft_bstdel(t_bst **node);
 t_bst	*ft_bstmax(t_bst *node);
 t_bst	*ft_bstmin(t_bst *node);
 void	ft_bstinorder(t_bst *root, void (*f)(t_bst *node));
 void	ft_bstpreorder(t_bst *root, void (*f)(t_bst *node));
 void	ft_bstpostorder(t_bst *root, void (*f)(t_bst *node));
-t_bst	*ft_bstrotright(t_bst *node);
-t_bst	*ft_bstrotleft(t_bst *node);
 void	ft_bstadd(t_bst **root, void *content, size_t content_size, \
 					int (*cmp)(const void *a, const void *b));
+t_bst	**ft_bstfind(t_bst **root, t_bst *node, \
+					int (*cmp)(const void *a, const void *b));
+t_bst	**ft_bstsearch(t_bst **root, void *content, size_t content_size, \
+						int (*cmp)(const void *a, const void *b));
 void	ft_bstavladd(t_bst **root, void *content, size_t content_size, \
 					int (*cmp)(const void *a, const void *b));
-t_bst	**ft_bstfind(t_bst **root, t_bst *node, \
+void	ft_bstavldel(t_bst **root, t_bst **to_del,
 					int (*cmp)(const void *a, const void *b));
 
 /*
@@ -167,7 +180,7 @@ t_list	*ft_lstat(t_list *alst, size_t n);
 void	ft_lstfree(t_list **link);
 void	ft_lstclean(t_list **alst);
 t_list	**ft_lstfind(t_list **alst, void *data, \
-						int (*cmp)(const void *a, const void *b));
+					int (*cmp)(const void *a, const void *b));
 
 /*
 ** lst2
@@ -196,10 +209,11 @@ t_lst	**ft_lfind(t_lst **alst, void *data, \
 ** mem
 */
 void	ft_shellsort(void *arr, size_t length, size_t sizeof_element, \
-						int (*cmp)(const void *a, const void *b));
+					int (*cmp)(const void *a, const void *b));
 void	ft_bzero(void *s, size_t n);
-char	**ft_cpystab(char **tab, char *val);
-void	ft_freestab(char **tab);
+char	**ft_arrdup(char **arr);
+void	ft_arrdel(char ***arr);
+void	ft_arrdelone(char **arr, char *to_del);
 void	ft_memdel(void **ap);
 void	*ft_memalloc(size_t size);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
