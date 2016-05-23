@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bstheight.c                                     :+:      :+:    :+:   */
+/*   ft_arrsort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/28 23:40:56 by mcanal            #+#    #+#             */
-/*   Updated: 2015/12/03 17:51:16 by mcanal           ###   ########.fr       */
+/*   Created: 2016/03/16 01:45:46 by mcanal            #+#    #+#             */
+/*   Updated: 2016/03/16 01:46:58 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** return the height of the binary tree
+** sort an array using shell_sort (based on arr->cmp)
 */
 
 #include "libft.h"
 
-size_t	ft_bstheight(t_bst *root)
+void			ft_arrsort(t_arr *arr)
 {
-	return (root ? 1 + (size_t)ft_max((int)ft_bstheight(root->left),
-										(int)ft_bstheight(root->right)) : 0);
+	ft_shellsort(arr->ptr, arr->length, arr->sizeof_element, arr->cmp);
 }

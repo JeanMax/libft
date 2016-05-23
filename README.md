@@ -6,5 +6,5 @@ a set of standard library functions (own implementation) and 'useful' functions
 
 ### TODO: ###
 
-* translate head comments which are still in french
-* fix putdbl or delete it, make your choice
+* find weird/useless functions, fix/remove them!
+* split libft.h ?

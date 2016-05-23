@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bstfree.c                                       :+:      :+:    :+:   */
+/*   ft_arrdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/28 15:31:05 by mcanal            #+#    #+#             */
-/*   Updated: 2015/12/02 20:52:48 by mcanal           ###   ########.fr       */
+/*   Created: 2016/03/13 00:25:22 by mcanal            #+#    #+#             */
+/*   Updated: 2016/05/24 00:18:01 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** free a node
+** free the whole t_arr (using arr->del if non-null)
 */
 
 #include "libft.h"
 
-void	ft_bstfree(t_bst **node)
+void		ft_arrdel(t_arr **arr)
 {
-	ft_memdel((void *)&(*node)->content);
-	ft_memdel((void *)node);
+	t_uchar	*swap;
+
+	if (!*arr)
+		return ;
+	if ((*arr)->del && (swap = (t_uchar *)(*arr)->ptr))
+		while ((*arr)->length--)
+		{
+			if ((*arr)->del)
+				(*arr)->del((void *)swap, (*arr)->sizeof_element);
+			swap += (*arr)->sizeof_element;
+		}
+	ft_memdel((void *)&(*arr)->ptr);
+	ft_memdel((void *)arr);
 }
