@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/24 00:01:22 by mcanal           ###   ########.fr       */
+/*   Updated: 2016/05/24 10:33:44 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,8 @@ void		ft_bstavldelone(t_bst **root, t_bst **to_del, t_cmp *cmp, \
 t_htable	*ft_hnew(size_t bucket_size);
 void		ft_hset(t_htable *table, void *key, void *value);
 void		*ft_hget(t_htable *table, void *key);
+void		*ft_hfind(t_htable *table, void *value);
+void		ft_hiter(t_htable *table, void (*f)(t_hnode *node));
 void		ft_hdel(t_htable **table);
 void		ft_hdelone(t_htable *table, void *key);
 
