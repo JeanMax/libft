@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2016/06/10 18:22:42 by mcanal           ###   ########.fr        #
+#    Updated: 2017/03/10 16:04:33 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,6 +18,7 @@ ARFLAGS =	-rcs
 RM =		rm -rf
 MKDIR =		mkdir -p
 MAKE =		make -j
+ECHO =      echo -e
 
 I_DIR =		-I inc/
 O_DIR =		obj
@@ -110,7 +111,7 @@ C_STR =		ft_strindex.c		ft_strrindex.c		ft_strcpy.c			\
 			ft_striter.c		ft_strmapi.c		ft_strsub.c			\
 			ft_strclr.c			ft_striteri.c		ft_strnequ.c		\
 			ft_strtrim.c		ft_strndup.c		ft_istoobig.c		\
-			ft_strstr.c			
+			ft_strstr.c
 
 OBJS =	$(C_ARR:%.c=$(O_DIR)/%.o)		$(C_BST:%.c=$(O_DIR)/%.o)		\
 		$(C_HASH:%.c=$(O_DIR)/%.o)		$(C_INT:%.c=$(O_DIR)/%.o)		\
@@ -150,13 +151,13 @@ sanitize:
 
 $(NAME): $(OBJS)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	@echo "$(BLUE)$(OBJS) $(WHITE)->$(RED) $@$(BASIC)"
-	@echo "$(WHITE)arflags:$(BASIC) $(ARFLAGS)"
-	@echo "$(WHITE)cflags:$(BASIC) $(CFLAGS) $(CCFLAGS)"
-	@echo "$(WHITE)compi:$(BASIC) $(CC)"
+	@$(ECHO) "$(BLUE)$(OBJS) $(WHITE)->$(RED) $@$(BASIC)"
+	@$(ECHO) "$(WHITE)arflags:$(BASIC) $(ARFLAGS)"
+	@$(ECHO) "$(WHITE)cflags:$(BASIC) $(CFLAGS) $(CCFLAGS)"
+	@$(ECHO) "$(WHITE)compi:$(BASIC) $(CC)"
 
 $(O_DIR)/%.o: %.c
-	@echo "$(WHITE)$<\t->$(BLUE) $@ $(BASIC)"
+	@$(ECHO) "$(WHITE)$<\t->$(BLUE) $@ $(BASIC)"
 	@$(CC) $(CFLAGS) $(CCFLAGS) $(I_DIR) -MMD -c $< -o $@
 
 $(OBJS): | $(O_DIR)
