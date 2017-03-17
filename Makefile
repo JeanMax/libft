@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2017/03/10 16:04:33 by mc               ###   ########.fr        #
+#    Updated: 2017/03/17 21:31:56 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,6 @@ ARFLAGS =	-rcs
 RM =		rm -rf
 MKDIR =		mkdir -p
 MAKE =		make -j
-ECHO =      echo -e
 
 I_DIR =		-I inc/
 O_DIR =		obj
@@ -36,8 +35,10 @@ ifeq ($(OS), Windows_NT)
 else
   UNAME_S = $(shell uname -s)
   ifeq ($(UNAME_S), Linux)
+	ECHO = echo -e
     CCFLAGS += -D LINUX
   else ifeq ($(UNAME_S), Darwin)
+	ECHO = echo
     CCFLAGS += -D OSX
   endif
   UNAME_P = $(shell uname -p)
