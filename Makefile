@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2017/03/17 21:31:56 by mcanal           ###   ########.fr        #
+#    Updated: 2017/03/19 20:57:43 by mcanal           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,7 +17,8 @@ AR =		ar
 ARFLAGS =	-rcs
 RM =		rm -rf
 MKDIR =		mkdir -p
-MAKE =		make -j
+MAKE =		make
+MAKEFLAGS =	-j 4
 
 I_DIR =		-I inc/
 O_DIR =		obj
@@ -42,6 +43,9 @@ else
     CCFLAGS += -D OSX
   endif
   UNAME_P = $(shell uname -p)
+  ifeq ($(UNAME_P), unknown)
+    UNAME_P = $(shell uname -m)
+  endif
   ifeq ($(UNAME_P), x86_64)
     CCFLAGS += -D AMD64
   else ifneq ($(filter %86, $(UNAME_P)), )
@@ -131,10 +135,10 @@ BASIC = \033[0m
 .PHONY: all debug sanitize clean fclean re
 
 all:
-	@$(MAKE) $(NAME)
+	$(MAKE) $(NAME)
 
 me_cry:
-	@$(MAKE) $(NAME) \
+	$(MAKE) $(NAME) \
 		"CFLAGS = -Wpedantic -Wshadow -Wconversion -Wcast-align \
 -Wstrict-prototypes -Wmissing-prototypes -Wunreachable-code -Winit-self \
 -Wmissing-declarations -Wfloat-equal -Wbad-function-cast -Wundef \
@@ -142,34 +146,34 @@ me_cry:
 -Wredundant-decls -Wall -Werror -Wextra -O2" #-Wcast-qual
 
 debug:
-	@$(MAKE) $(NAME) "CFLAGS = -g -ggdb"
+	$(MAKE) $(NAME) "CFLAGS = -g -ggdb"
 
 sanitize:
-	@$(MAKE) $(NAME) \
+	$(MAKE) $(NAME) \
 		"CFLAGS = -g -ggdb -O2 -fsanitize=address,undefined -ferror-limit=5"
 
 -include $(DEPS)
 
 $(NAME): $(OBJS)
-	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@$(ECHO) "$(BLUE)$(OBJS) $(WHITE)->$(RED) $@$(BASIC)"
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@$(ECHO) "$(WHITE)arflags:$(BASIC) $(ARFLAGS)"
 	@$(ECHO) "$(WHITE)cflags:$(BASIC) $(CFLAGS) $(CCFLAGS)"
 	@$(ECHO) "$(WHITE)compi:$(BASIC) $(CC)"
 
 $(O_DIR)/%.o: %.c
 	@$(ECHO) "$(WHITE)$<\t->$(BLUE) $@ $(BASIC)"
-	@$(CC) $(CFLAGS) $(CCFLAGS) $(I_DIR) -MMD -c $< -o $@
+	$(CC) $(CFLAGS) $(CCFLAGS) $(I_DIR) -MMD -c $< -o $@
 
 $(OBJS): | $(O_DIR)
 
 $(O_DIR):
-	@$(MKDIR) $(O_DIR)
+	$(MKDIR) $(O_DIR)
 
 clean:
-	@$(RM) $(O_DIR)
+	$(RM) $(O_DIR)
 
 fclean: clean
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all

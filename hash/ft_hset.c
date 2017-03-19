@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 00:16:50 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/24 00:09:37 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/03/18 23:29:27 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void		add_node(t_htable *table, void *key, void *value)
 	t_hnode **bucket_spot;
 	t_hnode	*swap;
 
-	hash = table->hash(&key, table->key_size);
+	hash = table->hash(key, table->key_size);
 	bucket_spot = table->bucket + hash % table->bucket_size;
 	swap = *bucket_spot;
 	while (swap)
@@ -96,8 +96,8 @@ static void		add_node(t_htable *table, void *key, void *value)
 		swap = swap->next;
 	}
 	swap = (t_hnode *)malloc(sizeof(t_hnode));
-	ft_memcpy(&swap->key, &key, table->key_size);
-	ft_memcpy(&swap->value, &value, table->value_size);
+	table->key_cpy(&swap->key, &key, table->key_size);
+	table->value_cpy(&swap->value, &value, table->value_size);
 	swap->hash = hash;
 	swap->next = *bucket_spot;
 	*bucket_spot = swap;

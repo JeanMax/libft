@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:40:37 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/24 00:14:06 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/03/18 23:28:43 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		ft_hdelone(t_htable *table, void *key)
 	t_hnode	**first;
 	size_t	hash;
 
-	hash = table->hash(&key, table->key_size);
+	hash = table->hash(key, table->key_size);
 	first = table->bucket + hash % table->bucket_size;
 	node = *first;
 	prev = NULL;

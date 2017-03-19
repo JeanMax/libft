@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 17:26:07 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/24 00:15:46 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/03/18 23:44:15 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		*ft_hget(t_htable *table, void *key)
 	t_hnode	*node;
 	size_t	hash;
 
-	hash = table->hash(&key, table->key_size);
+	hash = table->hash(key, table->key_size);
 	node = *(table->bucket + hash % table->bucket_size);
 	while (node)
 	{
