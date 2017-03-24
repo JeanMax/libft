@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 21:40:22 by mcanal            #+#    #+#             */
-/*   Updated: 2016/03/18 00:14:33 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/03/24 23:16:08 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ t_arr		*ft_arrnew(size_t length, size_t sizeof_element)
 {
 	t_arr	*new;
 
-	if (sizeof_element > sizeof(void *))
-		return (NULL);
 	new = (t_arr *)ft_memalloc(sizeof(t_arr));
 	new->sizeof_element = sizeof_element ? sizeof_element : sizeof(void *);
 	new->cpy = ft_memcpy;
