@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 05:46:14 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/01 15:09:52 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/03/29 14:42:31 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static char		*add_left(char *swap, size_t nbr)
 
 	end = swap + length(nbr);
 	swap = end - 1;
-	*swap = nbr % 10 + '0';
+	*swap = (char)(nbr % 10 + '0');
 	while (nbr /= 10)
-		*(--swap) = nbr % 10 + '0';
+		*(--swap) = (char)(nbr % 10 + '0');
 	return (end);
 }
 

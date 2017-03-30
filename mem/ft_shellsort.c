@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 23:16:44 by mcanal            #+#    #+#             */
-/*   Updated: 2016/03/16 01:48:50 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/03/29 14:44:07 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_shellsort(void *arr, size_t length, size_t n, t_ncmp *cmp)
 			{
 				ft_memcpy(((t_uchar *)arr) + (((size_t)j + gaps[ngap]) * n), \
 							((t_uchar *)arr) + ((size_t)j * n), n);
-				j -= gaps[ngap];
+				j -= (int)gaps[ngap];
 			}
 			ft_memcpy(((t_uchar *)arr) + (((size_t)j + gaps[ngap]) * n), \
 						swap, n);

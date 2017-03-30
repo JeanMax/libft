@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/28 17:07:11 by mcanal            #+#    #+#             */
-/*   Updated: 2016/09/25 17:57:54 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/03/29 16:00:14 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		dup_line(t_arr *arr, char **line)
 {
 	if (!(*line = ft_strdup(arr->ptr)))
 		return (-1);
-	while ((char)(long)(void *)ft_arrpop(arr, 0))
+	while ((char)(long)(char *)ft_arrpop(arr, 0))
 		;
 	return (1);
 }
@@ -52,7 +52,7 @@ int				get_next_line(int const fd, char **line)
 		{
 			if (*swap == '\n')
 				*swap = 0;
-			ft_arrpush(arr, (void *)(long)*(swap++), -1);
+			ft_arrpush(arr, (void *)(long)*swap++, -1);
 		}
 		if (ft_memchr(buf, 0, (size_t)ret))
 			return (dup_line(arr, line));
