@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2017/03/19 20:57:43 by mcanal           ###   ########.fr        #
+#    Updated: 2017/04/08 12:53:16 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -80,11 +80,10 @@ C_INT =		ft_isalnum.c		ft_isalpha.c		ft_isxdigit.c		\
 			ft_abs.c
 
 C_IO =		ft_putchar.c		ft_putnbr.c			ft_putstr.c			\
-			ft_putendl.c		ft_putchar_fd.c		get_all.c			\
-			ft_putendl_fd.c		ft_putstr_fd.c		get_next_line.c		\
-			ft_putstr_clr.c		ft_putchar_clr.c	ft_putendl_clr.c	\
-			ft_debugstr.c		ft_debugnbr.c		ft_putnbr_clr.c		\
-			fail.c				failn.c				ft_putnbr_fd.c		\
+			ft_putendl.c		ft_putchar_fd.c		ft_putendl_fd.c		\
+			ft_putstr_fd.c		get_next_line.c		ft_putstr_clr.c		\
+			ft_putchar_clr.c	ft_putendl_clr.c	ft_debugstr.c		\
+			ft_debugnbr.c		ft_putnbr_clr.c		ft_putnbr_fd.c		\
 			ft_putdbl.c			ft_putdbl_fd.c		ft_putdbl_clr.c		\
 			ft_debugdbl.c
 
@@ -106,17 +105,16 @@ C_MEM =		ft_bzero.c			ft_memccpy.c		ft_memchr.c			\
 			ft_memset.c			ft_memalloc.c		ft_memdel.c			\
 			ft_realloc.c		ft_swap.c			ft_shellsort.c
 
-C_STR =		ft_strindex.c		ft_strrindex.c		ft_strcpy.c			\
-			ft_atoi.c			ft_strcat.c			ft_strcmp.c			\
-			ft_strdup.c			ft_strlen.c			ft_strncpy.c		\
-			ft_strchr.c			ft_strlcat.c		ft_strsplit.c		\
-			ft_strncat.c		ft_strncmp.c		ft_strnstr.c		\
-			ft_strdel.c			ft_strjoin.c		ft_strnew.c			\
-			ft_strequ.c			ft_strmap.c			ft_strrchr.c		\
-			ft_striter.c		ft_strmapi.c		ft_strsub.c			\
-			ft_strclr.c			ft_striteri.c		ft_strnequ.c		\
-			ft_strtrim.c		ft_strndup.c		ft_istoobig.c		\
-			ft_strstr.c
+C_STR =		ft_strcpy.c			ft_atoi.c			ft_strcat.c			\
+			ft_strcmp.c			ft_strdup.c			ft_strlen.c			\
+			ft_strncpy.c		ft_strchr.c			ft_strlcat.c		\
+			ft_strsplit.c		ft_strncat.c		ft_strncmp.c		\
+			ft_strnstr.c		ft_strdel.c			ft_strjoin.c		\
+			ft_strnew.c			ft_strequ.c			ft_strmap.c			\
+			ft_strrchr.c		ft_striter.c		ft_strmapi.c		\
+			ft_strsub.c			ft_strclr.c			ft_striteri.c		\
+			ft_strnequ.c		ft_strtrim.c		ft_strndup.c		\
+			ft_istoobig.c		ft_strstr.c
 
 OBJS =	$(C_ARR:%.c=$(O_DIR)/%.o)		$(C_BST:%.c=$(O_DIR)/%.o)		\
 		$(C_HASH:%.c=$(O_DIR)/%.o)		$(C_INT:%.c=$(O_DIR)/%.o)		\
@@ -132,10 +130,13 @@ GREEN =  \033[32;01m
 BLUE =  \033[34;01m
 BASIC = \033[0m
 
-.PHONY: all debug sanitize clean fclean re
+.PHONY: all test debug sanitize clean fclean re
 
 all:
 	$(MAKE) $(NAME)
+
+test:
+	$(MAKE) -C test #TODO: handle flags
 
 me_cry:
 	$(MAKE) $(NAME) \
