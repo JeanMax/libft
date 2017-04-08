@@ -6,11 +6,23 @@
 /*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 20:57:38 by mc                #+#    #+#             */
-/*   Updated: 2017/04/08 20:02:29 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/08 20:36:01 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minunit.h"
+
+/*
+** arr
+*/
+
+/*
+** bst
+*/
+
+/*
+** hash
+*/
 
 /*
 ** int
@@ -23,10 +35,22 @@ MU_DUMMY_FUN(ft_isprint);
 MU_DUMMY_FUN(ft_toupper);
 MU_DUMMY_FUN(ft_isascii);
 MU_DUMMY_FUN(ft_itoa);
+MU_DUMMY_FUN(ft_islower);
+MU_DUMMY_FUN(ft_isgraph);
+MU_DUMMY_FUN(ft_ispunct);
+MU_DUMMY_FUN(ft_isupper);
+MU_DUMMY_FUN(ft_iscntrl);
+MU_DUMMY_FUN(ft_isspace);
+MU_DUMMY_FUN(ft_isxdigit);
+MU_DUMMY_FUN(ft_isblank);
+MU_DUMMY_FUN(ft_min);
+MU_DUMMY_FUN(ft_max);
+MU_DUMMY_FUN(ft_abs);
 
 /*
 ** io
 */
+MU_DUMMY_FUN(get_next_line);
 MU_DUMMY_FUN(ft_putnbr);
 MU_DUMMY_FUN(ft_putchar);
 MU_DUMMY_FUN(ft_putnbr_fd);
@@ -35,6 +59,17 @@ MU_DUMMY_FUN(ft_putstr);
 MU_DUMMY_FUN(ft_putendl);
 MU_DUMMY_FUN(ft_putstr_fd);
 MU_DUMMY_FUN(ft_putendl_fd);
+MU_DUMMY_FUN(ft_debugchar);
+MU_DUMMY_FUN(ft_debugstr);
+MU_DUMMY_FUN(ft_debugnbr);
+MU_DUMMY_FUN(ft_debugdbl);
+MU_DUMMY_FUN(ft_putchar_clr);
+MU_DUMMY_FUN(ft_putstr_clr);
+MU_DUMMY_FUN(ft_putendl_clr);
+MU_DUMMY_FUN(ft_putnbr_clr);
+MU_DUMMY_FUN(ft_putdbl_clr);
+MU_DUMMY_FUN(ft_putdbl);
+MU_DUMMY_FUN(ft_putdbl_fd);
 
 /*
 ** lst1
@@ -55,9 +90,12 @@ MU_DUMMY_FUN(ft_memset);
 MU_DUMMY_FUN(ft_memalloc);
 MU_DUMMY_FUN(ft_memcpy);
 MU_DUMMY_FUN(ft_memccpy);
+MU_DUMMY_FUN(ft_shellsort);
 MU_DUMMY_FUN(ft_memdel);
 MU_DUMMY_FUN(ft_memchr);
 MU_DUMMY_FUN(ft_memmove);
+MU_DUMMY_FUN(ft_swap);
+MU_DUMMY_FUN(ft_realloc);
 
 /*
 ** str
@@ -89,3 +127,5 @@ MU_DUMMY_FUN(ft_strsub);
 MU_DUMMY_FUN(ft_strequ);
 MU_DUMMY_FUN(ft_strncmp);
 MU_DUMMY_FUN(ft_strtrim);
+MU_DUMMY_FUN(ft_istoobig);
+MU_DUMMY_FUN(ft_strndup);
