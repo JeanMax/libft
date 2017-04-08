@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:32:38 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/08 17:31:02 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/08 18:57:06 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,17 @@ static void suites_me(char *search)
 		{test_putendl, "ft_putendl"},
 		{test_putstr_fd, "ft_putstr_fd"},
 		{test_putendl_fd, "ft_putendl_fd"},
+		{test_debugchar, "ft_debugchar"},
+		{test_debugstr, "ft_debugstr"},
+		{test_debugnbr, "ft_debugnbr"},
+		{test_debugdbl, "ft_debugdbl"},
+		{test_putchar_clr, "ft_putchar_clr"},
+		{test_putstr_clr, "ft_putstr_clr"},
+		{test_putendl_clr, "ft_putendl_clr"},
+		{test_putnbr_clr, "ft_putnbr_clr"},
+		{test_putdbl_clr, "ft_putdbl_clr"},
+		{test_putdbl, "ft_putdbl"},
+		{test_putdbl_fd, "ft_putdbl_fd"},
 	};
 
 	MU_TEST_SUITE suite_lst1 = {

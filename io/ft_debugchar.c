@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_dbl.c                                         :+:      :+:    :+:   */
+/*   ft_debugchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/01 12:36:33 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/01 12:55:00 by mcanal           ###   ########.fr       */
+/*   Created: 2014/12/26 23:24:49 by mcanal            #+#    #+#             */
+/*   Updated: 2017/04/08 18:48:16 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/libft.h"
-#include <stdio.h>
-#include <stdlib.h>
+/*
+** Allows to print a char * variable preceded by its name (debug!)
+*/
 
-int		main(int ac, char **av)
+#include "libft.h"
+#include <unistd.h>
+
+void			ft_debugchar(char *name, char c)
 {
-	char buf[1024];
-	double d = atof(*(av + 1));
-
-	sprintf(buf, "%f\n", d);
-	ft_putstr(buf);
-	ft_putdbl(d);
-	ft_putendl("");
-	return (0);
+	write(STDOUT_FILENO, CLR_RED"<", 9);
+	write(STDOUT_FILENO, name, ft_strlen(name));
+	write(STDOUT_FILENO, ":"CLR_GREEN, 9);
+	write(STDOUT_FILENO, &c, 1);
+	write(STDOUT_FILENO, CLR_RED">"CLR_RESET"\n", 14);
 }

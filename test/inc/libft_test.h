@@ -6,7 +6,7 @@
 /*   By: mc </var/spool/mail/mc>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 00:30:12 by mc                #+#    #+#             */
-/*   Updated: 2017/04/08 17:30:52 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/08 18:53:53 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,17 @@ void test_putstr(void);
 void test_putendl(void);
 void test_putstr_fd(void);
 void test_putendl_fd(void);
+void test_debugchar(void);
+void test_debugstr(void);
+void test_debugnbr(void);
+void test_debugdbl(void);
+void test_putchar_clr(void);
+void test_putstr_clr(void);
+void test_putendl_clr(void);
+void test_putnbr_clr(void);
+void test_putdbl_clr(void);
+void test_putdbl(void);
+void test_putdbl_fd(void);
 
 /*
 ** lst1

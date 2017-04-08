@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 15:17:16 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/08 17:14:40 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/08 19:47:37 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void test_swap()
 	char *str_a = "heyheyhey";
 	char *str_b = "byebyebye";
 
-	ft_swap(&str_a, &str_b, strlen(str_a));
+	ft_swap(&str_a, &str_b, sizeof(char *));
 	MU_ASSERT(!strcmp(str_a, "byebyebye"), "str_a (%s) not swap'ed", str_a);
 	MU_ASSERT(!strcmp(str_b, "heyheyhey"), "str_b (%s) not swap'ed", str_b);
 }

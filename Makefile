@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2017/04/08 12:53:16 by mc               ###   ########.fr        #
+#    Updated: 2017/04/08 18:48:00 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -85,7 +85,7 @@ C_IO =		ft_putchar.c		ft_putnbr.c			ft_putstr.c			\
 			ft_putchar_clr.c	ft_putendl_clr.c	ft_debugstr.c		\
 			ft_debugnbr.c		ft_putnbr_clr.c		ft_putnbr_fd.c		\
 			ft_putdbl.c			ft_putdbl_fd.c		ft_putdbl_clr.c		\
-			ft_debugdbl.c
+			ft_debugdbl.c		ft_debugchar.c
 
 C_LST1 =	ft_lstlast.c		ft_lstdel.c			ft_lstiter.c		\
 			ft_lstadd.c			ft_lstaddlast.c		ft_lstlen.c			\

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:51:30 by mcanal            #+#    #+#             */
-/*   Updated: 2015/07/14 13:08:40 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/04/08 18:22:44 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 void	ft_putendl(char const *s)
 {
 	if (s)
-		write(1, s, ft_strlen(s));
-	write(1, "\n", 1);
+		write(STDOUT_FILENO, s, ft_strlen(s));
+	write(STDOUT_FILENO, "\n", 1);
 }

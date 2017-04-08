@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:55:19 by mcanal            #+#    #+#             */
-/*   Updated: 2015/07/14 13:07:35 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/04/08 18:23:19 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@
 void	ft_putstr(char const *s)
 {
 	if (s)
-		write(1, s, ft_strlen(s));
+		write(STDOUT_FILENO, s, ft_strlen(s));
 }

@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/08 12:51:54 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/08 19:53:28 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,40 @@
 #  define ULONG_MAX		0xffffffffffffffff
 # endif
 
+# define CLR_BLACK "\033[30;01m"
+# define CLR_RED "\033[31;01m"
+# define CLR_GREEN "\033[32;01m"
+# define CLR_YELLOW "\033[33;01m"
+# define CLR_BLUE "\033[34;01m"
+# define CLR_MAGENTA "\033[35;01m"
+# define CLR_CYAN "\033[36;01m"
+# define CLR_WHITE "\033[37;01m"
+# define CLR_RESET "\033[0m"
+
+# ifndef MIN
+#  define MIN(a, b) ((a) < (b) ? (a) : (b))
+# endif
+
+# ifndef MAX
+#  define MAX(a, b) ((a) > (b) ? (a) : (b))
+# endif
+
+# ifndef ABS
+#  define ABS(x) ((x) < 0 ? (-x) : (x))
+# endif
+
 # include <string.h>
 
 typedef unsigned char	t_uchar;
 typedef unsigned short	t_ushort;
 typedef unsigned int	t_uint;
 typedef unsigned long	t_ulong;
+
 typedef int				t_bool;
+typedef unsigned char	t_byte;
+typedef unsigned short	t_word;
+typedef unsigned int	t_dword;
+
 typedef int				t_cmp(const void *a, const void *b);
 typedef int				t_ncmp(const void *a, const void *b, size_t n);
 typedef void			*t_cpy(void *dest, const void *src, size_t n);
@@ -235,6 +262,7 @@ void					ft_putchar_clr(char c, char *clr);
 void					ft_debugstr(char *name, char *str);
 void					ft_debugnbr(char *name, int nbr);
 void					ft_debugdbl(char *name, double nbr);
+void			 		ft_debugchar(char *name, char c);
 int						get_next_line(int const fd, char **line);
 
 /*

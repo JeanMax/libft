@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:54:09 by mcanal            #+#    #+#             */
-/*   Updated: 2017/03/29 14:41:04 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/04/08 18:34:38 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,5 @@
 
 void	ft_putnbr(int nbr)
 {
-	if (nbr == -2147483647 - 1)
-		ft_putstr("-2147483648");
-	else if (nbr < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(-nbr);
-	}
-	else if (nbr >= 0 && nbr <= 9)
-		ft_putchar((char)('0' + nbr));
-	else
-	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
-	}
+	ft_putnbr_fd(nbr, STDOUT_FILENO);
 }

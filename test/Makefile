@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2017/04/08 17:31:19 by mc               ###   ########.fr        #
+#    Updated: 2017/04/08 20:03:08 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -30,7 +30,11 @@ C_INT =		test_isalnum.c			test_isdigit.c			test_tolower.c		\
 
 C_IO =		test_get_next_line.c	test_putnbr.c			test_putchar.c		\
 			test_putnbr_fd.c		test_putchar_fd.c		test_putstr.c		\
-			test_putendl.c			test_putstr_fd.c		test_putendl_fd.c
+			test_putendl.c			test_putstr_fd.c		test_putendl_fd.c	\
+			test_debugchar.c		test_debugstr.c			test_debugnbr.c		\
+			test_debugdbl.c			test_putchar_clr.c		test_putstr_clr.c	\
+			test_putendl_clr.c		test_putnbr_clr.c		test_putdbl_clr.c	\
+			test_putdbl.c			test_putdbl_fd.c
 
 C_LST1 =	test_lstadd.c			test_lstdelone.c		test_lstmap.c		\
 			test_lstdel.c			test_lstiter.c			test_lstnew.c
