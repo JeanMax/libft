@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:32:38 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/07 16:13:30 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/08 17:31:02 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,17 @@ static void suites_me(char *search)
 		{test_itoa, "ft_itoa"},
 		{test_tolower, "ft_tolower"},
 		{test_toupper, "ft_toupper"},
+		{test_islower, "ft_islower"},
+		{test_isgraph, "ft_isgraph"},
+		{test_ispunct, "ft_ispunct"},
+		{test_isupper, "ft_isupper"},
+		{test_iscntrl, "ft_iscntrl"},
+		{test_isspace, "ft_isspace"},
+		{test_isxdigit, "ft_isxdigit"},
+		{test_isblank, "ft_isblank"},
+		{test_min, "ft_min"},
+		{test_max, "ft_max"},
+		{test_abs, "ft_abs"},
 	};
 
 	MU_TEST_SUITE suite_io = {
@@ -147,6 +158,8 @@ static void suites_me(char *search)
 		{test_memdel, "ft_memdel"},
 		{test_memchr, "ft_memchr"},
 		{test_memmove, "ft_memmove"},
+		{test_swap, "ft_swap"},
+		{test_realloc, "ft_realloc"},
 	};
 
 	MU_TEST_SUITE suite_str = {
@@ -177,6 +190,8 @@ static void suites_me(char *search)
 		{test_strequ, "ft_strequ"},
 		{test_strncmp, "ft_strncmp"},
 		{test_strtrim, "ft_strtrim"},
+		{test_istoobig, "ft_istoobig"},
+		{test_strndup, "ft_strndup"},
 	};
 
 

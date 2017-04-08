@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2017/04/07 02:04:12 by mc               ###   ########.fr        #
+#    Updated: 2017/04/08 17:31:19 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,11 @@ C_HASH =
 
 C_INT =		test_isalnum.c			test_isdigit.c			test_tolower.c		\
 			test_isalpha.c			test_isprint.c			test_toupper.c		\
-			test_isascii.c			test_itoa.c
+			test_isascii.c			test_itoa.c				test_islower.c		\
+			test_isgraph.c			test_ispunct.c			test_isupper.c		\
+			test_iscntrl.c			test_isspace.c			test_isxdigit.c		\
+			test_isblank.c			test_min.c				test_max.c			\
+			test_abs.c
 
 C_IO =		test_get_next_line.c	test_putnbr.c			test_putchar.c		\
 			test_putnbr_fd.c		test_putchar_fd.c		test_putstr.c		\
@@ -36,7 +40,7 @@ C_LST1 =	test_lstadd.c			test_lstdelone.c		test_lstmap.c		\
 C_MEM =		test_bzero.c			test_memcmp.c			test_memset.c		\
 			test_memalloc.c			test_memcpy.c			test_shellsort.c	\
 			test_memccpy.c			test_memdel.c			test_memchr.c		\
-			test_memmove.c
+			test_memmove.c			test_swap.c				test_realloc.c
 
 C_STR =		test_atoi.c				test_striter.c			test_strncpy.c		\
 			test_strcat.c			test_striteri.c			test_strnequ.c		\
@@ -46,7 +50,8 @@ C_STR =		test_atoi.c				test_striter.c			test_strncpy.c		\
 			test_strcpy.c			test_strmap.c			test_strsplit.c		\
 			test_strdel.c			test_strmapi.c			test_strstr.c		\
 			test_strdup.c			test_strncat.c			test_strsub.c		\
-			test_strequ.c			test_strncmp.c			test_strtrim.c
+			test_strequ.c			test_strncmp.c			test_strtrim.c		\
+			test_istoobig.c			test_strndup.c
 
 
 O_DIR =		obj

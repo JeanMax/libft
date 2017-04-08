@@ -6,7 +6,7 @@
 /*   By: mc </var/spool/mail/mc>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 00:30:12 by mc                #+#    #+#             */
-/*   Updated: 2017/04/05 21:21:26 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/08 17:30:52 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,25 @@
 /*
 ** int
 */
- void test_isalnum(void);
- void test_isdigit(void);
- void test_tolower(void);
- void test_isalpha(void);
- void test_isprint(void);
- void test_toupper(void);
- void test_isascii(void);
- void test_itoa(void);
+void test_isalnum(void);
+void test_isdigit(void);
+void test_tolower(void);
+void test_isalpha(void);
+void test_isprint(void);
+void test_toupper(void);
+void test_isascii(void);
+void test_itoa(void);
+void test_islower(void);
+void test_isgraph(void);
+void test_ispunct(void);
+void test_isupper(void);
+void test_iscntrl(void);
+void test_isspace(void);
+void test_isxdigit(void);
+void test_isblank(void);
+void test_min(void);
+void test_max(void);
+void test_abs(void);
 
 /*
 ** io
@@ -89,6 +100,8 @@ void test_memccpy(void);
 void test_memdel(void);
 void test_memchr(void);
 void test_memmove(void);
+void test_swap(void);
+void test_realloc(void);
 
 /*
 ** str
@@ -120,5 +133,7 @@ void test_strsub(void);
 void test_strequ(void);
 void test_strncmp(void);
 void test_strtrim(void);
+void test_istoobig(void);
+void test_strndup(void);
 
 #endif
