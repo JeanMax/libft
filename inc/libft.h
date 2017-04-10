@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/08 22:45:56 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/09 12:58:46 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,17 @@
 #  define ULONG_MAX		0xffffffffffffffff
 # endif
 
-# define CLR_BLACK "\033[30;01m"
-# define CLR_RED "\033[31;01m"
-# define CLR_GREEN "\033[32;01m"
-# define CLR_YELLOW "\033[33;01m"
-# define CLR_BLUE "\033[34;01m"
-# define CLR_MAGENTA "\033[35;01m"
-# define CLR_CYAN "\033[36;01m"
-# define CLR_WHITE "\033[37;01m"
-# define CLR_RESET "\033[0m"
+# ifndef CLR_BLACK
+#  define CLR_BLACK "\033[30;01m"
+#  define CLR_RED "\033[31;01m"
+#  define CLR_GREEN "\033[32;01m"
+#  define CLR_YELLOW "\033[33;01m"
+#  define CLR_BLUE "\033[34;01m"
+#  define CLR_MAGENTA "\033[35;01m"
+#  define CLR_CYAN "\033[36;01m"
+#  define CLR_WHITE "\033[37;01m"
+#  define CLR_RESET "\033[0m"
+# endif
 
 # ifndef MIN
 #  define MIN(a, b) ((a) < (b) ? (a) : (b))

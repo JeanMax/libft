@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:32:38 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/08 18:57:06 by mc               ###   ########.fr       */
+/*   Updated: 2017/04/09 13:01:59 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ static void suites_me(char *search)
 		MU_RUN_TEST_FROM_SUITE(search, suite_str);
 
 		if (test_run_before == g_tests_run) {
-			fprintf(stderr, "+ Test %s: "RED"not found\n"BASIC, search);
+			fprintf(stderr, "+ Test %s: "CLR_RED"not found\n"CLR_RESET, search);
 			exit(EXIT_FAILURE);
 		}
 	} else {
@@ -241,7 +241,7 @@ MU_HAI(); //yep, this is really ugly :/
 
 int main(int ac, char **av) //TODO: --help
 {
-	setbuf(stdout, NULL); /* TODO: find a better place for this */		\
+	setbuf(stdout, NULL); /* TODO: find a better place for this */
 	if (ac > 1 && (!strcmp(*(av + 1), "--school") || !strcmp(*(av + 1), "-42"))) {
 		suites_school();
 	} else {
