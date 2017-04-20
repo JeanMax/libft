@@ -6,54 +6,11 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2017/04/08 18:48:00 by mc               ###   ########.fr        #
+#    Updated: 2017/04/20 20:41:26 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME =		libft.a
-
-CC =		$(shell clang --version >/dev/null 2>&1 && echo clang || echo gcc)
-AR =		ar
-ARFLAGS =	-rcs
-RM =		rm -rf
-MKDIR =		mkdir -p
-MAKE =		make
-MAKEFLAGS =	-j 4
-
-I_DIR =		-I inc/
-O_DIR =		obj
-VPATH =		arr:bst:hash:int:io:lst1:lst2:mem:str
-
-CFLAGS =	-Wall -Wextra -Werror -O2
-
-ifeq ($(OS), Windows_NT)
-  CCFLAGS += -D WIN32
-  ifeq ($(PROCESSOR_ARCHITECTURE), AMD64)
-    CCFLAGS += -D AMD64
-  else ifeq ($(PROCESSOR_ARCHITECTURE), x86)
-    CCFLAGS += -D IA32
-  endif
-else
-  UNAME_S = $(shell uname -s)
-  ifeq ($(UNAME_S), Linux)
-	ECHO = echo -e
-    CCFLAGS += -D LINUX
-  else ifeq ($(UNAME_S), Darwin)
-	ECHO = echo
-    CCFLAGS += -D OSX
-  endif
-  UNAME_P = $(shell uname -p)
-  ifeq ($(UNAME_P), unknown)
-    UNAME_P = $(shell uname -m)
-  endif
-  ifeq ($(UNAME_P), x86_64)
-    CCFLAGS += -D AMD64
-  else ifneq ($(filter %86, $(UNAME_P)), )
-    CCFLAGS += -D IA32
-  else ifneq ($(filter arm%, $(UNAME_P)), )
-    CCFLAGS += -D ARM
-  endif
-endif
 
 C_ARR =		ft_arrnew.c			ft_arrdup.c			ft_arrdel.c			\
 			ft_arrpush.c		ft_arrpop.c			ft_arrget.c			\
@@ -124,34 +81,103 @@ OBJS =	$(C_ARR:%.c=$(O_DIR)/%.o)		$(C_BST:%.c=$(O_DIR)/%.o)		\
 
 DEPS =  $(OBJS:%.o=%.d)
 
+CC =		$(shell clang --version >/dev/null 2>&1 && echo clang || echo gcc)
+AR =		ar
+ARFLAGS =	-rcs
+RM =		rm -rf
+MKDIR =		mkdir -p
+MAKE =		make
+MAKEFLAGS =	-j 4
+
+I_DIR =		-I inc/
+O_DIR =		obj
+VPATH =		arr:bst:hash:int:io:lst1:lst2:mem:str
+TEST_DIR =	test
+
+CFLAGS =	-Wall -Wextra -Werror -O2
+
+ifeq ($(OS), Windows_NT)
+  CCFLAGS += -D WIN32
+  ifeq ($(PROCESSOR_ARCHITECTURE), AMD64)
+    CCFLAGS += -D AMD64
+  else ifeq ($(PROCESSOR_ARCHITECTURE), x86)
+    CCFLAGS += -D IA32
+  endif
+else
+  UNAME_S = $(shell uname -s)
+  ifeq ($(UNAME_S), Linux)
+	ECHO = echo -e
+    CCFLAGS += -D LINUX
+  else ifeq ($(UNAME_S), Darwin)
+	ECHO = echo
+    CCFLAGS += -D OSX
+  endif
+  UNAME_P = $(shell uname -p)
+  ifeq ($(UNAME_P), unknown)
+    UNAME_P = $(shell uname -m)
+  endif
+  ifeq ($(UNAME_P), x86_64)
+    CCFLAGS += -D AMD64
+  else ifneq ($(filter %86, $(UNAME_P)), )
+    CCFLAGS += -D IA32
+  else ifneq ($(filter arm%, $(UNAME_P)), )
+    CCFLAGS += -D ARM
+  endif
+endif
+
+PREV_FLAGS_LOG = .previous-flag
+PREV_FLAGS = "$(shell cat "$(O_DIR)/$(PREV_FLAGS_LOG)" 2>/dev/null)"
+
 WHITE = \033[37;01m
 RED = \033[31;01m
 GREEN =  \033[32;01m
 BLUE =  \033[34;01m
 BASIC = \033[0m
 
-.PHONY: all test debug sanitize clean fclean re
+ifndef VERBOSE
+.SILENT:
+endif
 
-all:
-	$(MAKE) $(NAME)
 
-test:
-	$(MAKE) -C test #TODO: handle flags
+.PHONY: all test debug sanitize clean fclean mrproper re
 
-me_cry:
-	$(MAKE) $(NAME) \
-		"CFLAGS = -Wpedantic -Wshadow -Wconversion -Wcast-align \
+all: | $(O_DIR)
+ifeq (,$(findstring fsanitize, $(PREV_FLAGS)))
+	$(ECHO) $(FLAGS) | grep -q fsanitize && $(MAKE) mrproper && $(MKDIR) $(O_DIR) || true
+else
+	$(ECHO) $(FLAGS) | grep -qv fsanitize && $(MAKE) mrproper && $(MKDIR) $(O_DIR) || true
+endif
+	$(ECHO) $(FLAGS) > $(O_DIR)/$(PREV_FLAGS_LOG)
+
+	$(MAKE) $(NAME) $(FLAGS)
+
+test: all
+	$(MAKE) -C $(TEST_DIR) #TODO: handle flags
+
+debug: FLAGS = "CFLAGS = -g -ggdb"
+debug: all
+
+sanitize: FLAGS = "CFLAGS = -g -ggdb -fsanitize=address,undefined -ferror-limit=5 -O2"
+sanitize: all
+
+me_cry: FLAGS = "CFLAGS = -Wpedantic -Wshadow -Wconversion -Wcast-align \
 -Wstrict-prototypes -Wmissing-prototypes -Wunreachable-code -Winit-self \
 -Wmissing-declarations -Wfloat-equal -Wbad-function-cast -Wundef \
 -Waggregate-return -Wstrict-overflow=5 -Wold-style-definition -Wpadded \
 -Wredundant-decls -Wall -Werror -Wextra -O2" #-Wcast-qual
+me_cry: all
 
-debug:
-	$(MAKE) $(NAME) "CFLAGS = -g -ggdb"
+clean:
+	$(RM) $(O_DIR)
 
-sanitize:
-	$(MAKE) $(NAME) \
-		"CFLAGS = -g -ggdb -O2 -fsanitize=address,undefined -ferror-limit=5"
+fclean: clean
+	$(RM) $(NAME)
+
+mrproper: fclean
+	$(MAKE) -C $(TEST_DIR) fclean || true
+
+re: fclean all
+
 
 -include $(DEPS)
 
@@ -160,21 +186,12 @@ $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@$(ECHO) "$(WHITE)arflags:$(BASIC) $(ARFLAGS)"
 	@$(ECHO) "$(WHITE)cflags:$(BASIC) $(CFLAGS) $(CCFLAGS)"
+	@$(ECHO) "$(WHITE)ccflags:$(BASIC) $(CCFLAGS)"
 	@$(ECHO) "$(WHITE)compi:$(BASIC) $(CC)"
 
 $(O_DIR)/%.o: %.c
 	@$(ECHO) "$(WHITE)$<\t->$(BLUE) $@ $(BASIC)"
 	$(CC) $(CFLAGS) $(CCFLAGS) $(I_DIR) -MMD -c $< -o $@
 
-$(OBJS): | $(O_DIR)
-
 $(O_DIR):
 	$(MKDIR) $(O_DIR)
-
-clean:
-	$(RM) $(O_DIR)
-
-fclean: clean
-	$(RM) $(NAME)
-
-re: fclean all

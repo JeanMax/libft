@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2017/04/08 20:03:08 by mc               ###   ########.fr        #
+#    Updated: 2017/04/20 20:42:24 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -39,7 +39,7 @@ C_IO =		test_get_next_line.c	test_putnbr.c			test_putchar.c		\
 C_LST1 =	test_lstadd.c			test_lstdelone.c		test_lstmap.c		\
 			test_lstdel.c			test_lstiter.c			test_lstnew.c
 
-# C_LST2 =
+C_LST2 =
 
 C_MEM =		test_bzero.c			test_memcmp.c			test_memset.c		\
 			test_memalloc.c			test_memcpy.c			test_shellsort.c	\
@@ -89,9 +89,11 @@ RM =		rm -rf
 MKDIR =		mkdir -p
 MAKE =		make
 MAKEFLAGS = -j 4
-ECHO =		echo -e
 CC =		$(shell clang --version >/dev/null 2>&1 && echo clang || echo gcc)
 CFLAGS =	-Wall -Wextra -Werror
+
+PREV_FLAGS_LOG = .previous-flag
+PREV_FLAGS = "$(shell cat "$(O_DIR)/$(PREV_FLAGS_LOG)" 2>/dev/null)"
 
 UNAME_S =   $(shell uname -s)
 ifeq ($(UNAME_S), Linux)
@@ -100,10 +102,28 @@ else ifeq ($(UNAME_S), Darwin)
   ECHO =	echo
 endif
 
+WHITE =		\033[37;01m
+RED =		\033[31;01m
+GREEN =		\033[32;01m
+YELLOW =	\033[33;01m
+BLUE =		\033[34;01m
+BASIC =		\033[0m
+
+ifndef VERBOSE
+.SILENT:
+endif
+
 
 .PHONY: all debug sanitize me_cry clean fclean mrproper re
 
 all:
+ifeq (,$(findstring fsanitize, $(PREV_FLAGS)))
+	$(ECHO) $(FLAGS) | grep -q fsanitize && $(MAKE) -C $(LFT_DIR) mrproper && $(MKDIR) $(O_DIR) || true
+else
+	$(ECHO) $(FLAGS) | grep -qv fsanitize && $(MAKE) -C $(LFT_DIR) mrproper && $(MKDIR) $(O_DIR) || true
+endif
+	$(ECHO) $(FLAGS) > $(O_DIR)/$(PREV_FLAGS_LOG)
+
 	$(MAKE) -C $(LFT_DIR) $(FLAGS)
 	$(MAKE) $(NAME) $(FLAGS)
 	./$(NAME)
@@ -123,19 +143,6 @@ me_cry: FLAGS = "CFLAGS = -Wpedantic -Wshadow -Wconversion -Wcast-align \
 -Wredundant-decls -Wall -Werror -Wextra" #-Wcast-qual -Wpadded
 me_cry: all
 
--include $(DEPS)
-
-$(NAME): $(OBJS) $(LFT) $(MIN)
-	$(CC) $(CFLAGS) $(I_DIR) $(OBJS) -Wl,--whole-archive $(LIBS) -Wl,--no-whole-archive -o $@
-
-$(O_DIR)/%.o: %.c
-	$(CC) $(CFLAGS) $(I_DIR) -MMD -c $< -o $@
-
-$(OBJS): | $(O_DIR)
-
-$(O_DIR):
-	$(MKDIR) $(O_DIR)
-
 clean:
 	$(RM) $(O_DIR)
 
@@ -146,3 +153,23 @@ mrproper: fclean
 	$(MAKE) -C $(LFT_DIR) fclean
 
 re: fclean all
+
+
+-include $(DEPS)
+
+$(NAME): $(OBJS) $(LFT) $(MIN)
+	@$(ECHO) "$(BLUE)$(OBJS) $(WHITE)->$(RED) $@ $(BASIC)"
+	$(CC) $(CFLAGS) $(CCFLAGS) $(I_DIR) $(OBJS) -Wl,--whole-archive $(LIBS) -Wl,--no-whole-archive -o $@
+	@$(ECHO) "$(WHITE)cflags:$(BASIC) $(CFLAGS)"
+	@$(ECHO) "$(WHITE)ccflags:$(BASIC) $(CCFLAGS)"
+	@$(ECHO) "$(WHITE)libs:$(BASIC) $(LIBS)"
+	@$(ECHO) "$(WHITE)compi:$(BASIC) $(CC)"
+
+$(O_DIR)/%.o: %.c
+	@$(ECHO) "$(WHITE)$<\t->$(BLUE) $@ $(BASIC)"
+	$(CC) $(CFLAGS) $(CCFLAGS) $(I_DIR) -MMD -c $< -o $@
+
+$(OBJS): | $(O_DIR)
+
+$(O_DIR):
+	$(MKDIR) $(O_DIR)
