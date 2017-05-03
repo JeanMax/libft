@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 11:32:38 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/09 13:01:59 by mc               ###   ########.fr       */
+/*   Updated: 2017/05/03 20:13:15 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,15 @@ static void suites_me(char *search)
 		{test_lstdel, "ft_lstdel"},
 		{test_lstiter, "ft_lstiter"},
 		{test_lstnew, "ft_lstnew"},
+		{test_lstlast, "ft_lstlast"},
+		{test_lstinser, "ft_lstinser"},
+		{test_lstfind, "ft_lstfind"},
+		{test_lstisn, "ft_lstisn"},
+		{test_lstat, "ft_lstat"},
+		{test_lstdellink, "ft_lstdellink"},
+		{test_lstrplc, "ft_lstrplc"},
+		{test_lstaddlast, "ft_lstaddlast"},
+		{test_lstlen, "ft_lstlen"},
 	};
 
 /* MU_TEST_SUITE suite_lst2 = { */

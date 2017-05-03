@@ -6,7 +6,7 @@
 /*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 20:57:38 by mc                #+#    #+#             */
-/*   Updated: 2017/04/08 20:36:01 by mc               ###   ########.fr       */
+/*   Updated: 2017/05/03 20:16:30 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,15 @@ MU_DUMMY_FUN(ft_lstmap);
 MU_DUMMY_FUN(ft_lstdel);
 MU_DUMMY_FUN(ft_lstiter);
 MU_DUMMY_FUN(ft_lstnew);
+MU_DUMMY_FUN(ft_lstlast);
+MU_DUMMY_FUN(ft_lstinser);
+MU_DUMMY_FUN(ft_lstfind);
+MU_DUMMY_FUN(ft_lstisn);
+MU_DUMMY_FUN(ft_lstat);
+MU_DUMMY_FUN(ft_lstdellink);
+MU_DUMMY_FUN(ft_lstrplc);
+MU_DUMMY_FUN(ft_lstaddlast);
+MU_DUMMY_FUN(ft_lstlen);
 
 /*
 ** mem

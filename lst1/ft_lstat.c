@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 03:35:27 by mcanal            #+#    #+#             */
-/*   Updated: 2015/11/28 18:30:18 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/05/03 20:51:20 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_list	*ft_lstat(t_list *alst, size_t n)
 {
 	if (!alst || !n)
 		return (NULL);
-	while (n-- && alst->next != NULL)
+	while (--n && alst)
 		alst = alst->next;
 	return (alst);
 }

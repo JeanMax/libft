@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/08 19:53:28 by mc               ###   ########.fr       */
+/*   Updated: 2017/05/04 00:12:05 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,17 @@
 #  define ULONG_MAX		0xffffffffffffffff
 # endif
 
-# define CLR_BLACK "\033[30;01m"
-# define CLR_RED "\033[31;01m"
-# define CLR_GREEN "\033[32;01m"
-# define CLR_YELLOW "\033[33;01m"
-# define CLR_BLUE "\033[34;01m"
-# define CLR_MAGENTA "\033[35;01m"
-# define CLR_CYAN "\033[36;01m"
-# define CLR_WHITE "\033[37;01m"
-# define CLR_RESET "\033[0m"
+# ifndef CLR_BLACK
+#  define CLR_BLACK "\033[30;01m"
+#  define CLR_RED "\033[31;01m"
+#  define CLR_GREEN "\033[32;01m"
+#  define CLR_YELLOW "\033[33;01m"
+#  define CLR_BLUE "\033[34;01m"
+#  define CLR_MAGENTA "\033[35;01m"
+#  define CLR_CYAN "\033[36;01m"
+#  define CLR_WHITE "\033[37;01m"
+#  define CLR_RESET "\033[0m"
+# endif
 
 # ifndef MIN
 #  define MIN(a, b) ((a) < (b) ? (a) : (b))
@@ -64,7 +66,7 @@
 # endif
 
 # ifndef ABS
-#  define ABS(x) ((x) < 0 ? (-x) : (x))
+#  define ABS(x) ((x) < 0 ? -(x) : (x))
 # endif
 
 # include <string.h>
@@ -282,7 +284,7 @@ size_t					ft_lstisn(t_list *alst, t_list *link);
 size_t					ft_lstlen(t_list *alst);
 t_list					*ft_lstlast(t_list *link);
 t_list					*ft_lstat(t_list *alst, size_t n);
-t_list					**ft_lstfind(t_list **alst, void *data, t_cmp *cmp);
+t_list					*ft_lstfind(t_list **alst, void *data, t_ncmp *cmp);
 
 /*
 ** lst2

@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 13:16:03 by mcanal            #+#    #+#              #
-#    Updated: 2017/04/20 20:42:24 by mc               ###   ########.fr        #
+#    Updated: 2017/05/03 22:04:24 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -37,7 +37,11 @@ C_IO =		test_get_next_line.c	test_putnbr.c			test_putchar.c		\
 			test_putdbl.c			test_putdbl_fd.c
 
 C_LST1 =	test_lstadd.c			test_lstdelone.c		test_lstmap.c		\
-			test_lstdel.c			test_lstiter.c			test_lstnew.c
+			test_lstdel.c			test_lstiter.c			test_lstnew.c		\
+			test_lstlast.c			test_lstinser.c			test_lstfind.c		\
+			test_lstisn.c			test_lstat.c			test_lstdellink.c	\
+			test_lstrplc.c			test_lstaddlast.c		test_lstlen.c
+
 
 C_LST2 =
 
@@ -116,7 +120,7 @@ endif
 
 .PHONY: all debug sanitize me_cry clean fclean mrproper re
 
-all:
+all: | $(O_DIR)
 ifeq (,$(findstring fsanitize, $(PREV_FLAGS)))
 	$(ECHO) $(FLAGS) | grep -q fsanitize && $(MAKE) -C $(LFT_DIR) mrproper && $(MKDIR) $(O_DIR) || true
 else
@@ -127,6 +131,7 @@ endif
 	$(MAKE) -C $(LFT_DIR) $(FLAGS)
 	$(MAKE) $(NAME) $(FLAGS)
 	./$(NAME)
+	diff -q ./inc/libft_copy.h $(LFT_DIR)/inc/libft.h
 	./count_files.sh
 
 debug: FLAGS = "CFLAGS = -D DEBUG_MODE -g -ggdb"

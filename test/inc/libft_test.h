@@ -6,7 +6,7 @@
 /*   By: mc </var/spool/mail/mc>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 00:30:12 by mc                #+#    #+#             */
-/*   Updated: 2017/04/08 18:53:53 by mc               ###   ########.fr       */
+/*   Updated: 2017/05/03 20:18:10 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,15 @@ void test_lstmap(void);
 void test_lstdel(void);
 void test_lstiter(void);
 void test_lstnew(void);
+void test_lstlast(void);
+void test_lstinser(void);
+void test_lstfind(void);
+void test_lstisn(void);
+void test_lstat(void);
+void test_lstdellink(void);
+void test_lstrplc(void);
+void test_lstaddlast(void);
+void test_lstlen(void);
 
 /*
 ** lst2
