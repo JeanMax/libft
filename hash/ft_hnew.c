@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 04:59:46 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/24 00:11:27 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/09/13 17:54:20 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,6 @@
 
 #include "libft.h"
 
-static size_t		jenkins_hash(const void *content, size_t content_size)
-{
-	size_t	hash;
-	t_uchar	*swap;
-
-	hash = 0;
-	swap = (t_uchar *)content;
-	while (content_size--)
-	{
-		hash += *(swap++);
-		hash += (hash << 10);
-		hash ^= (hash >> 6);
-	}
-	hash += (hash << 3);
-	hash ^= (hash >> 11);
-	return (hash + (hash << 15));
-}
-
 t_htable			*ft_hnew(size_t bucket_size)
 {
 	t_htable	*new;
@@ -46,7 +28,7 @@ t_htable			*ft_hnew(size_t bucket_size)
 	new->bucket = (t_hnode **)\
 		ft_memalloc(sizeof(t_hnode *) * (bucket_size + 1));
 	new->bucket_size = bucket_size;
-	new->hash = jenkins_hash;
+	new->hash = ft_jenkins_hash;
 	new->key_cmp = ft_memcmp;
 	new->value_cmp = ft_memcmp;
 	new->key_cpy = ft_memcpy;

@@ -6,7 +6,7 @@
 #    By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 21:26:32 by mcanal            #+#    #+#              #
-#    Updated: 2017/04/20 20:41:26 by mc               ###   ########.fr        #
+#    Updated: 2017/09/13 16:48:29 by mc               ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,7 +26,7 @@ C_BST =		ft_bstnew.c			ft_bstdelone.c		ft_bstsearch.c		\
 
 C_HASH =	ft_hnew.c			ft_hset.c			ft_hget.c			\
 			ft_hdel.c			ft_hdelone.c		ft_hfind.c			\
-			ft_hiter.c
+			ft_hiter.c			ft_jenkins_hash.c
 
 C_INT =		ft_isalnum.c		ft_isalpha.c		ft_isxdigit.c		\
 			ft_isascii.c		ft_isdigit.c		ft_isprint.c		\

@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 00:16:50 by mcanal            #+#    #+#             */
-/*   Updated: 2017/03/18 23:29:27 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/09/13 18:21:17 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void		resize_table(t_htable *table)
 	table->bucket = new_bucket;
 }
 
-static void		add_node(t_htable *table, void *key, void *value)
+static t_bool	add_node(t_htable *table, void *key, void *value)
 {
 	size_t	hash;
 	t_hnode **bucket_spot;
@@ -91,7 +91,7 @@ static void		add_node(t_htable *table, void *key, void *value)
 			if (table->value_del)
 				table->value_del(swap->value, table->value_size);
 			swap->value = value;
-			return ;
+			return (FALSE);
 		}
 		swap = swap->next;
 	}
@@ -100,13 +100,13 @@ static void		add_node(t_htable *table, void *key, void *value)
 	table->value_cpy(&swap->value, &value, table->value_size);
 	swap->hash = hash;
 	swap->next = *bucket_spot;
-	*bucket_spot = swap;
+	return (t_bool)(*bucket_spot = swap);
 }
 
 void			ft_hset(t_htable *table, void *key, void *value)
 {
-	add_node(table, key, value);
-	table->length++;
+	if (add_node(table, key, value))
+		table->length++;
 	if (table->length / table->bucket_size > RESIZE_TRIGGER)
 		resize_table(table);
 }

@@ -6,13 +6,13 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/14 15:10:14 by mcanal            #+#    #+#             */
-/*   Updated: 2016/05/21 19:02:01 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/09/12 23:13:59 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** Assign (with malloc (3)) and returns an array of fresh character strings
-** (all ended with one '\0 ', the array also thus) tesulting from the cut of
+** (all ended with one '\0 ', the array also thus) resulting from the cut of
 ** s according to the character c. If the allocation fails,
 ** the function returns NULL.
 ** Example: ft_strsplit("*what*is***up*", ’*’) returns the array
@@ -56,6 +56,13 @@ static void		ft_freetab(char **arr)
 	ft_memdel((void *)arr);
 }
 
+static void		*ft_wevegotaproblem(char ***arr)
+{
+	ft_freetab(*arr);
+	ft_memdel((void *)arr);
+	return (NULL);
+}
+
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
@@ -71,11 +78,7 @@ char			**ft_strsplit(char const *s, char c)
 		if (*s)
 		{
 			if (!(tab[i] = ft_strsub(s, 0, ft_word_len(s, c))))
-			{
-				ft_freetab(tab);
-				ft_memdel((void *)&tab);
-				return (NULL);
-			}
+				return (ft_wevegotaproblem(&tab));
 			s += ft_word_len(s, c);
 			i++;
 		}
