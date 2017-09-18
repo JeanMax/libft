@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/26 23:12:33 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/08 18:28:09 by mc               ###   ########.fr       */
+/*   Updated: 2017/09/18 18:20:20 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-void	ft_putdbl_clr(double nbr, char *clr) //TODO
+void	ft_putdbl_clr(double nbr, char *clr)
 {
 	if (!clr)
 		return ;
