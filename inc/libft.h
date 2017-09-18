@@ -6,7 +6,7 @@
 /*   By: mcanal <mcanal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 14:13:23 by mcanal            #+#    #+#             */
-/*   Updated: 2017/09/18 18:20:58 by mcanal           ###   ########.fr       */
+/*   Updated: 2017/09/18 18:31:49 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,8 @@ void					*ft_hfind(t_htable *table, void *value);
 void					ft_hiter(t_htable *table, void (*f)(t_hnode *node));
 void					ft_hdel(t_htable **table);
 void					ft_hdelone(t_htable *table, void *key);
+size_t					ft_jenkins_hash(const void *content,
+										size_t content_size);
 
 /*
 ** int
@@ -284,7 +286,7 @@ size_t					ft_lstisn(t_list *alst, t_list *link);
 size_t					ft_lstlen(t_list *alst);
 t_list					*ft_lstlast(t_list *link);
 t_list					*ft_lstat(t_list *alst, size_t n);
-t_list					**ft_lstfind(t_list **alst, void *data, t_cmp *cmp);
+t_list					*ft_lstfind(t_list **alst, void *data, t_ncmp *cmp);
 
 /*
 ** lst2
