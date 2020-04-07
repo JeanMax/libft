@@ -6,7 +6,7 @@
 /*   By: mcanal <zboub@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 15:17:16 by mcanal            #+#    #+#             */
-/*   Updated: 2017/04/06 02:12:00 by mc               ###   ########.fr       */
+/*   Updated: 2020/04/07 14:42:16 by mc               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void test_bzero()
 
     memset(s_test, 'a', 4);
     memset(s_ctrl, 'a', 4);
-    bzero(s_ctrl, 0);
-    ft_bzero(s_test, 0);
+    bzero(s_ctrl, (0));
+    ft_bzero(s_test, (0));
 	MU_ASSERT(!memcmp(s_test, s_ctrl, 5), \
 			  "test (%s) and ctrl (%s) differ", s_test, s_ctrl);
 }
